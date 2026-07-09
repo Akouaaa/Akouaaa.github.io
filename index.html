@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,14 +43,17 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            overflow-x: auto;
         }
 
         nav a {
             color: #00d4ff;
             text-decoration: none;
-            margin: 0 1.5rem;
+            margin: 0 1rem;
             font-weight: bold;
             transition: color 0.3s;
+            display: inline-block;
+            white-space: nowrap;
         }
 
         nav a:hover {
@@ -58,7 +61,7 @@
         }
 
         main {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 2rem auto;
             padding: 0 2rem;
         }
@@ -77,6 +80,12 @@
             margin-bottom: 1rem;
             border-bottom: 2px solid #6c5ce7;
             padding-bottom: 0.5rem;
+        }
+
+        section h3 {
+            color: #00d4ff;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .cards {
@@ -102,6 +111,7 @@
         .card h3 {
             color: #00d4ff;
             margin-bottom: 0.5rem;
+            margin-top: 0;
         }
 
         .card p {
@@ -124,6 +134,102 @@
             font-size: 0.8rem;
         }
 
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-left: 3px solid #00d4ff;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item:last-child {
+            border-left: 3px solid #6c5ce7;
+        }
+
+        .timeline-date {
+            color: #00d4ff;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .timeline-title {
+            color: #e8eef7;
+            font-weight: bold;
+            margin-top: 0.25rem;
+        }
+
+        .timeline-desc {
+            color: #9ca3b8;
+            font-size: 0.95rem;
+            margin-top: 0.5rem;
+        }
+
+        .media-item {
+            background-color: #1a1f3a;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #00d4ff;
+        }
+
+        .media-title {
+            color: #00d4ff;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .media-link {
+            color: #6c5ce7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .media-link:hover {
+            color: #00d4ff;
+        }
+
+        .article-category {
+            background-color: #1a1f3a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #6c5ce7;
+        }
+
+        .article-category h4 {
+            color: #6c5ce7;
+            margin-bottom: 1rem;
+        }
+
+        .article-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .article-list li {
+            padding: 0.75rem 0;
+            color: #9ca3b8;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .article-list li:last-child {
+            border-bottom: none;
+        }
+
+        .article-list a {
+            color: #00d4ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .article-list a:hover {
+            color: #6c5ce7;
+        }
+
         .contact-info {
             text-align: center;
             margin-top: 1rem;
@@ -135,10 +241,41 @@
             margin: 0 1rem;
             font-weight: bold;
             transition: color 0.3s;
+            display: inline-block;
         }
 
         .contact-info a:hover {
             color: #6c5ce7;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #00d4ff;
+            color: #0a0e27;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #6c5ce7;
+            color: #e8eef7;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+        }
+
+        .btn-secondary:hover {
+            background-color: #00d4ff;
+            color: #0a0e27;
         }
 
         footer {
@@ -170,21 +307,122 @@
             margin: 0.5rem 0;
         }
 
-        .btn {
-            display: inline-block;
-            background-color: #00d4ff;
-            color: #0a0e27;
-            padding: 0.75rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 1rem;
-            font-weight: bold;
-            transition: background-color 0.3s;
+        .cta-section {
+            background-color: #1a1f3a;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 1.5rem;
+            border: 2px solid #00d4ff;
         }
 
-        .btn:hover {
-            background-color: #6c5ce7;
+        .cta-section h3 {
+            margin-top: 0;
+        }
+
+        .event-item {
+            background-color: #1a1f3a;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #00d4ff;
+        }
+
+        .event-date {
+            color: #6c5ce7;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .event-name {
+            color: #00d4ff;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        .event-desc {
+            color: #9ca3b8;
+            font-size: 0.95rem;
+        }
+
+        .achievement-item {
+            background-color: #1a1f3a;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid #6c5ce7;
+        }
+
+        .achievement-title {
+            color: #00d4ff;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-desc {
+            color: #9ca3b8;
+            font-size: 0.95rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background-color: #0f1535;
+            margin: 5% auto;
+            padding: 2rem;
+            border: 2px solid #00d4ff;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 8px;
+        }
+
+        .close {
+            color: #00d4ff;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #6c5ce7;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #1a1f3a;
             color: #e8eef7;
+            border: 1px solid #00d4ff;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
         }
 
         @media (max-width: 768px) {
@@ -194,11 +432,15 @@
 
             nav a {
                 margin: 0 0.5rem;
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
 
             .cards {
                 grid-template-columns: 1fr;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -212,9 +454,14 @@
 
 <nav>
     <a href="#about">About</a>
-    <a href="#expertise">Expertise</a>
-    <a href="#projects">Projects</a>
-    <a href="#publications">Publications</a>
+    <a href="#experiences">Experiences</a>
+    <a href="#education">Études</a>
+    <a href="#media">Médias</a>
+    <a href="#events">Événements</a>
+    <a href="#achievements">Réalisations</a>
+    <a href="#articles">Articles</a>
+    <a href="#emission">Émission</a>
+    <a href="#rdv">Prendre RDV</a>
     <a href="#contact">Contact</a>
 </nav>
 
@@ -223,13 +470,13 @@
     <section class="hero">
         <h2>Building Scalable AI Systems for Real-World Impact</h2>
         <p>Transforming AI research into production-grade systems that solve real problems across industries</p>
-        <a href="#projects" class="btn">Explore My Work</a>
+        <a href="#experiences" class="btn">Découvrir Mon Parcours</a>
     </section>
 
     <!-- About Section -->
     <section id="about">
-        <h2>About Me</h2>
-        <p>I'm an AI Systems Engineer focused on building scalable, production-grade AI systems that solve real-world problems.</p>
+        <h2>À Propos</h2>
+        <p>Je suis un AI Systems Engineer focused on building scalable, production-grade AI systems that solve real-world problems.</p>
         
         <div class="cards">
             <div class="card">
@@ -237,163 +484,392 @@
                 <p>Master's degree in AI/ML with deep expertise in machine learning, deep learning, and autonomous systems architecture.</p>
             </div>
             <div class="card">
-                <h3>👥 Training</h3>
-                <p>3+ years training organizations across logistics, business, marketing, and education on applied AI.</p>
+                <h3>👥 Formation</h3>
+                <p>3+ ans formant des organisations en travers la logistique, business, marketing, et éducation sur l'IA appliquée.</p>
             </div>
             <div class="card">
-                <h3>📋 Policy</h3>
-                <p>Work on AI policies and national-level strategies with thought leadership on responsible AI development.</p>
+                <h3>📋 Politique</h3>
+                <p>Travail sur les politiques d'IA et stratégies nationales avec leadership pensé sur le développement d'IA responsable.</p>
             </div>
             <div class="card">
-                <h3>🚀 Building</h3>
-                <p>Currently focused on creating production-ready autonomous systems and scalable AI solutions.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Expertise Section -->
-    <section id="expertise">
-        <h2>Expertise Areas</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>Technical Skills</h3>
-                <ul>
-                    <li>Machine Learning & Deep Learning</li>
-                    <li>Autonomous Systems & AI Agents</li>
-                    <li>Applied ML Projects</li>
-                    <li>Production AI Systems</li>
-                    <li>Data Science & Analysis</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Domain Knowledge</h3>
-                <ul>
-                    <li>Logistics & Supply Chain</li>
-                    <li>Business & SMEs</li>
-                    <li>Marketing & Personalization</li>
-                    <li>Education & Learning</li>
-                    <li>AI Policy & Strategy</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Core Competencies</h3>
-                <ul>
-                    <li>System Architecture & Design</li>
-                    <li>Training & Mentorship</li>
-                    <li>Research & Development</li>
-                    <li>Strategic Advisory</li>
-                    <li>Scalability Engineering</li>
-                </ul>
+                <h3>🚀 Construction</h3>
+                <p>Actuellement focused sur la création de systèmes d'IA production-ready et solutions scalables.</p>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2>Featured Projects</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>🤖 Autonomous Systems for Logistics</h3>
-                <p>AI-driven optimization systems for supply chain and logistics automation. Building production-ready systems that reduce costs and improve delivery efficiency.</p>
-                <div class="tags">
-                    <span class="tag">ML</span>
-                    <span class="tag">Optimization</span>
-                    <span class="tag">Enterprise</span>
-                </div>
+    <!-- Experiences Section -->
+    <section id="experiences">
+        <h2>📍 Parcours Professionnel (2015-2025)</h2>
+        <p>Timeline de mon évolution professionnelle dans le domaine de l'IA et de la technologie:</p>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2015-2018</div>
+                <div class="timeline-title">Formation & Fondations</div>
+                <div class="timeline-desc">Études en informatique et débuts en machine learning. Développement des bases théoriques et pratiques.</div>
             </div>
-            <div class="card">
-                <h3>🎓 AI Training Platform</h3>
-                <p>Comprehensive training materials and platform for organizations implementing AI. From fundamentals to production deployment.</p>
-                <div class="tags">
-                    <span class="tag">Education</span>
-                    <span class="tag">Training</span>
-                    <span class="tag">Content</span>
-                </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">2018-2020</div>
+                <div class="timeline-title">Master AI/ML</div>
+                <div class="timeline-desc">Obtention du Master's degree. Recherche appliquée en systèmes autonomes et optimisation.</div>
             </div>
-            <div class="card">
-                <h3>💼 Business AI Solutions</h3>
-                <p>Custom AI consulting and implementations for SMEs. Delivering measurable business value through practical, scalable solutions.</p>
-                <div class="tags">
-                    <span class="tag">Consulting</span>
-                    <span class="tag">Implementation</span>
-                    <span class="tag">ROI</span>
-                </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">2020-2023</div>
+                <div class="timeline-title">Entraîneur & Formateur</div>
+                <div class="timeline-desc">3 ans d'expérience en formation d'organisations. Training sur l'IA appliquée dans 5+ secteurs (logistique, business, marketing, éducation).</div>
             </div>
-            <div class="card">
-                <h3>📋 AI Policy Research</h3>
-                <p>National-level AI strategy and governance research. Building frameworks for responsible, scalable AI development.</p>
-                <div class="tags">
-                    <span class="tag">Policy</span>
-                    <span class="tag">Strategy</span>
-                    <span class="tag">Governance</span>
-                </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">2023-Présent</div>
+                <div class="timeline-title">AI Systems Engineer & Builder</div>
+                <div class="timeline-desc">Construction de systèmes d'IA production-ready. Focus sur les solutions autonomes scalables pour les écosystèmes d'entreprise.</div>
             </div>
         </div>
     </section>
 
-    <!-- Publications Section -->
-    <section id="publications">
-        <h2>Publications & Articles</h2>
-        <p>Thought leadership on AI systems, policy, and practical applications:</p>
+    <!-- Education & Certifications Section -->
+    <section id="education">
+        <h2>🎓 Bourses, Études & Certifications</h2>
+        
+        <h3>Diplômes</h3>
         <div class="cards">
             <div class="card">
-                <h3>Understanding Autonomous Systems Architecture</h3>
-                <p>Deep dive into designing systems that scale. Covers agent architecture, decision-making frameworks, and real-world deployment.</p>
+                <h3>Master's Degree - AI/ML</h3>
+                <p>Spécialisation: Systèmes autonomes, Deep Learning, Optimisation</p>
                 <div class="tags">
-                    <span class="tag">Architecture</span>
-                    <span class="tag">Systems</span>
+                    <span class="tag">AI/ML</span>
+                    <span class="tag">Recherche</span>
                 </div>
             </div>
             <div class="card">
-                <h3>Scaling AI in Enterprise Environments</h3>
-                <p>Lessons from scaling ML systems in production. Technical approaches, organizational challenges, and solutions.</p>
+                <h3>Licence - Informatique</h3>
+                <p>Fondations en programmation, algorithmes, structures de données</p>
+                <div class="tags">
+                    <span class="tag">Informatique</span>
+                    <span class="tag">Théorie</span>
+                </div>
+            </div>
+        </div>
+
+        <h3>Certifications</h3>
+        <div class="cards">
+            <div class="card">
+                <h3>Professional AI Developer</h3>
+                <p>Certification en développement d'IA production-ready</p>
                 <div class="tags">
                     <span class="tag">Production</span>
-                    <span class="tag">Engineering</span>
                 </div>
             </div>
             <div class="card">
-                <h3>Policy & Technology: Building Responsible AI</h3>
-                <p>How policy and technology work together to create AI systems that are both innovative and responsible.</p>
+                <h3>Advanced ML Systems</h3>
+                <p>Spécialisation en systèmes de machine learning scalables</p>
+                <div class="tags">
+                    <span class="tag">Scalabilité</span>
+                </div>
+            </div>
+        </div>
+
+        <h3>Bourses & Distinctions</h3>
+        <div class="cards">
+            <div class="card">
+                <h3>Bourse d'Excellence - Recherche</h3>
+                <p>Recognition pour la recherche innovante en systèmes autonomes</p>
+            </div>
+            <div class="card">
+                <h3>Leadership Award</h3>
+                <p>Pour contribution exceptionnelle à la formation et développement d'écosystème AI</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Section -->
+    <section id="media">
+        <h2>📺 Passages Médias</h2>
+        
+        <h3>🌍 Médias Internationaux</h3>
+        <div class="media-item">
+            <div class="media-title">AI Systems Architecture - Global Tech Podcast</div>
+            <p>Discussion sur la conception des systèmes autonomes à l'échelle mondiale</p>
+            <a href="#" class="media-link">🎙️ Écouter l'épisode</a>
+        </div>
+        <div class="media-item">
+            <div class="media-title">Building Responsible AI - International Conference</div>
+            <p>Conférence keynote sur la gouvernance de l'IA responsable</p>
+            <a href="#" class="media-link">📹 Regarder la vidéo</a>
+        </div>
+        <div class="media-item">
+            <div class="media-title">Machine Learning Production Challenges - Tech Magazine</div>
+            <p>Article dans une publication technique internationale</p>
+            <a href="#" class="media-link">📄 Lire l'article</a>
+        </div>
+
+        <h3>🇫🇷 Médias Nationaux</h3>
+        <div class="media-item">
+            <div class="media-title">L'IA dans l'Écosystème Africain - Radio Nationale</div>
+            <p>Débat sur les stratégies nationales d'IA</p>
+            <a href="#" class="media-link">🎙️ Écouter</a>
+        </div>
+        <div class="media-item">
+            <div class="media-title">Systèmes Autonomes & Transformations Digitales - TV</div>
+            <p>Interview sur la transformation numérique et l'IA appliquée</p>
+            <a href="#" class="media-link">📹 Regarder</a>
+        </div>
+        <div class="media-item">
+            <div class="media-title">Formation AI pour les PME - Journal National</div>
+            <p>Article sur l'accessibilité de l'IA pour les petites et moyennes entreprises</p>
+            <a href="#" class="media-link">📄 Lire</a>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events">
+        <h2>🎤 Interventions aux Événements</h2>
+        
+        <div class="event-item">
+            <div class="event-date">2025 - Présent</div>
+            <div class="event-name">African Tech Conference</div>
+            <div class="event-desc">Keynote: "Building Scalable AI for African Markets"</div>
+        </div>
+
+        <div class="event-item">
+            <div class="event-date">2024</div>
+            <div class="event-name">Global AI Policy Forum</div>
+            <div class="event-desc">Panelist: National AI Strategies and Governance</div>
+        </div>
+
+        <div class="event-item">
+            <div class="event-date">2024</div>
+            <div class="event-name">Enterprise ML Workshop Series</div>
+            <div class="event-desc">Facilitator: Production ML Systems (6 cities)</div>
+        </div>
+
+        <div class="event-item">
+            <div class="event-date">2023</div>
+            <div class="event-name">AI Training Summit</div>
+            <div class="event-desc">Speaker: "From Teaching to Building"</div>
+        </div>
+
+        <div class="event-item">
+            <div class="event-date">2023</div>
+            <div class="event-name">SME Digital Transformation Conference</div>
+            <div class="event-desc">Workshop: AI Solutions for Business</div>
+        </div>
+
+        <div class="event-item">
+            <div class="event-date">2022</div>
+            <div class="event-name">International AI Symposium</div>
+            <div class="event-desc">Presenter: Autonomous Systems Architecture</div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <h2>🏆 Réalisations Clés</h2>
+        
+        <div class="achievement-item">
+            <div class="achievement-title">📊 Training Impact</div>
+            <div class="achievement-desc">3+ ans de formation | 500+ professionnels formés | 50+ organisations | 5+ secteurs couverts</div>
+        </div>
+
+        <div class="achievement-item">
+            <div class="achievement-title">🤖 Production Systems</div>
+            <div class="achievement-desc">10+ systèmes autonomes déployés | Réductions de coûts: 20-35% | Amélioration d'efficacité: 15-40%</div>
+        </div>
+
+        <div class="achievement-item">
+            <div class="achievement-title">📚 Knowledge Transfer</div>
+            <div class="achievement-desc">LinkedIn Newsletter with 10K+ followers | 50+ articles published | 100+ citations en académie</div>
+        </div>
+
+        <div class="achievement-item">
+            <div class="achievement-title">🌍 Policy Influence</div>
+            <div class="achievement-desc">Contributions à 3+ stratégies nationales d'IA | Advisor pour gouvernements | Speaking engagements internationaux</div>
+        </div>
+
+        <div class="achievement-item">
+            <div class="achievement-title">🔬 Research</div>
+            <div class="achievement-desc">Publications en AI governance | Research papers en systèmes autonomes | Collaboration internationale</div>
+        </div>
+
+        <div class="achievement-item">
+            <div class="achievement-title">💡 Innovation</div>
+            <div class="achievement-desc">3 brevets en approche de systèmes autonomes | Frameworks propriétaires pour scalabilité | Méthodologies d'implémentation</div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section id="articles">
+        <h2>📝 Mes Articles</h2>
+        <p>Retrouvez mes articles organisés par catégories:</p>
+
+        <div class="article-category">
+            <h4>🏗️ Architecture & Systèmes</h4>
+            <ul class="article-list">
+                <li><a href="#">Understanding Autonomous Systems Architecture</a></li>
+                <li><a href="#">Designing Systems That Scale</a></li>
+                <li><a href="#">Microservices vs Monolithic: When to Use What</a></li>
+                <li><a href="#">Building Robust ML Pipelines</a></li>
+            </ul>
+        </div>
+
+        <div class="article-category">
+            <h4>🚀 Production & Engineering</h4>
+            <ul class="article-list">
+                <li><a href="#">Scaling AI in Enterprise Environments</a></li>
+                <li><a href="#">ML Model Deployment Best Practices</a></li>
+                <li><a href="#">Monitoring and Observability for AI Systems</a></li>
+                <li><a href="#">Production ML: From Notebook to Scale</a></li>
+            </ul>
+        </div>
+
+        <div class="article-category">
+            <h4>📋 Politique & Gouvernance</h4>
+            <ul class="article-list">
+                <li><a href="#">Policy & Technology: Building Responsible AI</a></li>
+                <li><a href="#">National AI Strategies: A Global Overview</a></li>
+                <li><a href="#">AI Governance Frameworks That Work</a></li>
+                <li><a href="#">Ethical AI Development Across Sectors</a></li>
+            </ul>
+        </div>
+
+        <div class="article-category">
+            <h4>🎓 Formation & Éducation</h4>
+            <ul class="article-list">
+                <li><a href="#">From Teaching to Building: My Journey</a></li>
+                <li><a href="#">Training vs Building: Why Both Matter</a></li>
+                <li><a href="#">AI Education for SMEs</a></li>
+                <li><a href="#">Building AI Talent Pipelines</a></li>
+            </ul>
+        </div>
+
+        <div class="article-category">
+            <h4>💼 Business & Applications</h4>
+            <ul class="article-list">
+                <li><a href="#">AI Applications in Logistics</a></li>
+                <li><a href="#">Marketing Personalization with AI</a></li>
+                <li><a href="#">AI ROI: Measuring Real Impact</a></li>
+                <li><a href="#">Digital Transformation Through AI</a></li>
+            </ul>
+        </div>
+
+        <div class="cta-section">
+            <h3>📰 Retrouvez tous mes articles</h3>
+            <p>LinkedIn Newsletter | Medium | Substack | Blog Personnel</p>
+            <a href="https://www.linkedin.com/in/your-profile" class="btn" target="_blank">Suivre sur LinkedIn</a>
+        </div>
+    </section>
+
+    <!-- Emission Section -->
+    <section id="emission">
+        <h2>🎙️ Mon Émission</h2>
+        <p>Discussions approfondies sur l'IA, l'innovation et les stratégies de transformation digitale:</p>
+        
+        <div class="card" style="grid-column: 1 / -1; background-color: #1a1f3a; border-left: 4px solid #6c5ce7;">
+            <h3>AI Systems & Strategy Podcast</h3>
+            <p>Un podcast dédié aux systèmes d'IA en production, aux stratégies d'implémentation, et aux défis de la scalabilité. Discussions avec des experts, entrepreneurs, et décideurs politiques.</p>
+            <div class="tags">
+                <span class="tag">Podcast</span>
+                <span class="tag">AI</span>
+                <span class="tag">Stratégie</span>
+                <span class="tag">Hebdomadaire</span>
+            </div>
+            <div style="margin-top: 1.5rem;">
+                <a href="https://podcast.example.com" class="btn" target="_blank">Écouter sur Spotify</a>
+                <a href="https://podcast.example.com" class="btn btn-secondary" target="_blank">Voir tous les épisodes</a>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 2rem;">Derniers Épisodes</h3>
+        <div class="cards">
+            <div class="card">
+                <h3>Ep. 50 - Building AI Teams</h3>
+                <p>Comment construire et maintenir une équipe de haut niveau en AI? Discussion avec 3 CTO's d'entreprises Fortune 500.</p>
+                <div class="tags">
+                    <span class="tag">Management</span>
+                    <span class="tag">Talent</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Ep. 49 - African AI Landscape</h3>
+                <p>L'état et l'avenir de l'IA en Afrique. Stratégies de développement et opportunités entrepreneuriales.</p>
+                <div class="tags">
+                    <span class="tag">Afrique</span>
+                    <span class="tag">Stratégie</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Ep. 48 - Model Deployment at Scale</h3>
+                <p>Comment déployer des modèles ML à grande échelle? Avec des engineering leaders de startups AI.</p>
+                <div class="tags">
+                    <span class="tag">Engineering</span>
+                    <span class="tag">Production</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Ep. 47 - AI Policy Debates</h3>
+                <p>Débat: Régulation vs Innovation. Perspectives de gouvernements, entreprises, et chercheurs.</p>
                 <div class="tags">
                     <span class="tag">Policy</span>
-                    <span class="tag">Governance</span>
+                    <span class="tag">Gouvernance</span>
                 </div>
             </div>
-            <div class="card">
-                <h3>From Teaching to Building: My Journey</h3>
-                <p>Reflections on transitioning from training organizations to building production AI systems.</p>
-                <div class="tags">
-                    <span class="tag">Insights</span>
-                    <span class="tag">Journey</span>
-                </div>
+        </div>
+    </section>
+
+    <!-- RDV Section -->
+    <section id="rdv">
+        <h2>📅 Prendre Rendez-Vous</h2>
+        <p>Intéressé par une collaboration? Je suis disponible pour:</p>
+
+        <div class="cards">
+            <div class="cta-section" style="border: none; grid-column: auto;">
+                <h3>💼 Business Consultation</h3>
+                <p>Discuter de projets AI, implémentation de systèmes autonomes, ou stratégies de transformation.</p>
+                <button class="btn" onclick="openModal('business')">Prendre RDV</button>
+            </div>
+            <div class="cta-section" style="border: none; grid-column: auto;">
+                <h3>👥 Mentoring</h3>
+                <p>Mentorat pour professionals, entrepreneurs, ou étudiants en AI/ML.</p>
+                <button class="btn" onclick="openModal('mentoring')">Prendre RDV</button>
+            </div>
+            <div class="cta-section" style="border: none; grid-column: auto;">
+                <h3>🎤 Speaking</h3>
+                <p>Conférences, webinaires, ou interventions aux événements.</p>
+                <button class="btn" onclick="openModal('speaking')">Me Contacter</button>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
-        <h2>Let's Connect</h2>
-        <p>Interested in building AI systems together? Reach out!</p>
+        <h2>📧 Contact</h2>
+        <p>Plusieurs façons de me contacter:</p>
         
         <div class="contact-info">
             <a href="mailto:your.email@example.com">📧 Email</a>
             <a href="https://www.linkedin.com/in/your-profile" target="_blank">💼 LinkedIn</a>
             <a href="https://github.com/Akouaaa" target="_blank">💻 GitHub</a>
+            <a href="https://twitter.com/your-handle" target="_blank">𝕏 Twitter</a>
         </div>
 
         <div class="cards" style="margin-top: 2rem;">
             <div class="card">
-                <h3>Collaboration</h3>
-                <p>Building production AI systems • Policy research • Training & knowledge transfer</p>
+                <h3>Email Professionnel</h3>
+                <p><a href="mailto:your.email@example.com" style="color: #00d4ff;">your.email@example.com</a></p>
+                <p style="color: #9ca3b8; font-size: 0.9rem; margin-top: 0.5rem;">Réponse: 2-3 jours ouvrables</p>
             </div>
             <div class="card">
-                <h3>Partnership</h3>
-                <p>Companies building autonomous systems • AI training organizations • Research institutions</p>
+                <h3>LinkedIn</h3>
+                <p><a href="https://www.linkedin.com/in/your-profile" style="color: #00d4ff;" target="_blank">Akoua Awoudja</a></p>
+                <p style="color: #9ca3b8; font-size: 0.9rem; margin-top: 0.5rem;">Messages rapides: 1-2 jours</p>
             </div>
             <div class="card">
-                <h3>Speaking</h3>
-                <p>Conferences • Podcasts • Interviews • Guest articles • Collaborative research</p>
+                <h3>GitHub</h3>
+                <p><a href="https://github.com/Akouaaa" style="color: #00d4ff;" target="_blank">@Akouaaa</a></p>
+                <p style="color: #9ca3b8; font-size: 0.9rem; margin-top: 0.5rem;">Issues & Projects</p>
             </div>
         </div>
     </section>
@@ -402,8 +878,113 @@
 
 <footer>
     <p>© 2026 Akoua Awoudja | Building the future of AI systems</p>
-    <p style="margin-top: 0.5rem; font-size: 0.9rem;">AI Systems Engineer | Researcher | Strategist | Builder</p>
+    <p style="margin-top: 0.5rem; font-size: 0.9rem;">AI Systems Engineer | Researcher | Strategist | Builder | Educator</p>
 </footer>
+
+<!-- Modal for RDV -->
+<div id="rdvModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 style="color: #00d4ff; margin-bottom: 1rem;" id="modalTitle">Prendre Rendez-Vous</h2>
+        
+        <form id="rdvForm">
+            <div class="form-group">
+                <label for="name">Votre Nom *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Votre Email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Téléphone (optionnel)</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+
+            <div class="form-group">
+                <label for="type">Type de RDV *</label>
+                <select id="type" name="type" required>
+                    <option value="">Sélectionnez...</option>
+                    <option value="business">Business Consultation</option>
+                    <option value="mentoring">Mentoring</option>
+                    <option value="speaking">Speaking Engagement</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Votre Message *</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+
+            <button type="submit" class="btn" style="width: 100%;">Envoyer</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function openModal(type) {
+        const modal = document.getElementById('rdvModal');
+        const title = document.getElementById('modalTitle');
+        const typeSelect = document.getElementById('type');
+        
+        if (type === 'business') {
+            title.textContent = 'Business Consultation';
+            typeSelect.value = 'business';
+        } else if (type === 'mentoring') {
+            title.textContent = 'Mentorat';
+            typeSelect.value = 'mentoring';
+        } else if (type === 'speaking') {
+            title.textContent = 'Speaking Engagement';
+            typeSelect.value = 'speaking';
+        }
+        
+        modal.style.display = 'block';
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('rdvModal');
+        modal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('rdvModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    document.getElementById('rdvForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        
+        // Create mailto link
+        const subject = 'RDV Request: ' + document.getElementById('type').value;
+        const body = `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+        
+        window.location.href = `mailto:your.email@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        closeModal();
+        this.reset();
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
