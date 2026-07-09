@@ -1,0 +1,877 @@
+---
+layout: default
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akoua Awoudja - AI Systems Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00d4ff;
+            --primary-dark: #00a8cc;
+            --secondary: #6c5ce7;
+            --bg-dark: #0a0e27;
+            --bg-darker: #050812;
+            --text-light: #e8eef7;
+            --text-muted: #9ca3b8;
+            --border: #1a1f3a;
+            --accent: #ff6b6b;
+            --success: #00d4aa;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, var(--bg-darker) 0%, #0f1535 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Dark Mode by Default */
+        body.light-mode {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            color: #1a1f3a;
+            --text-light: #1a1f3a;
+            --text-muted: #6c757d;
+            --border: #dee2e6;
+        }
+
+        /* Navigation & Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+        }
+
+        body.light-mode header {
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: var(--border);
+            border: 1px solid var(--border);
+            color: var(--primary);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+            border-color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 60px;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(108, 92, 231, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite reverse;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--bg-dark);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            margin-bottom: 6rem;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(15, 21, 53, 0.8) 0%, rgba(26, 31, 58, 0.6) 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.light-mode .card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(249, 250, 251, 0.7) 100%);
+            border-color: #e9ecef;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.15);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        body.light-mode .tag {
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        /* Expertise Section */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .expertise-item {
+            padding: 1.5rem;
+            border-left: 3px solid var(--primary);
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        body.light-mode .expertise-item {
+            background: rgba(0, 212, 255, 0.03);
+        }
+
+        .expertise-item:hover {
+            transform: translateX(5px);
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .expertise-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .expertise-item ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .expertise-item li {
+            color: var(--text-muted);
+            padding: 0.3rem 0;
+            font-size: 0.95rem;
+        }
+
+        .expertise-item li::before {
+            content: '→ ';
+            color: var(--primary);
+            margin-right: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            margin-top: 4rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--primary);
+            border-radius: 50%;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Search & Modal */
+        .search-box {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: rgba(0, 212, 255, 0.05);
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        body.light-mode .search-box input {
+            background: rgba(0, 212, 255, 0.03);
+            color: var(--text-dark, #1a1f3a);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .loading {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="#" class="logo">AA</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#publications">Articles</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">🌙</button>
+        </ul>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Building Scalable AI Systems</h1>
+        <p class="tagline">For Real-World Impact</p>
+        <p class="hero-description">
+            AI Systems Engineer | Researcher | Strategist | Autonomous Systems Builder
+            <br>
+            Transforming AI research into production-grade systems that solve real problems
+        </p>
+        <div class="cta-buttons">
+            <a href="#projects" class="btn btn-primary">Explore My Work</a>
+            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        </div>
+    </div>
+    <div class="scroll-indicator">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 2v20M8 19l7 7 7-7" stroke="var(--primary)"/>
+        </svg>
+    </div>
+</section>
+
+<main>
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p class="section-subtitle">My Journey in AI</p>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <h3>🎓 Education</h3>
+                <p>Master's degree in AI/ML with deep expertise in machine learning, deep learning, and autonomous systems architecture.</p>
+            </div>
+            <div class="card">
+                <h3>👥 Training</h3>
+                <p>3+ years training organizations across logistics, business, marketing, education on applied AI applications and strategies.</p>
+            </div>
+            <div class="card">
+                <h3>📋 Policy</h3>
+                <p>Work on AI policies and national-level strategies, publishing thought leadership on responsible AI development.</p>
+            </div>
+            <div class="card">
+                <h3>🚀 Building</h3>
+                <p>Currently focused on creating production-ready autonomous systems and scalable AI solutions for enterprise ecosystems.</p>
+            </div>
+            <div class="card">
+                <h3>💡 Innovation</h3>
+                <p>Bridging the gap between research and practice, creating systems that actually work in the real world.</p>
+            </div>
+            <div class="card">
+                <h3>🌍 Impact</h3>
+                <p>Building toward a scalable tech company that develops AI solutions used across industries for measurable value.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise">
+        <h2>Expertise Areas</h2>
+        <p class="section-subtitle">Technical Skills & Domain Knowledge</p>
+        
+        <div class="expertise-grid">
+            <div class="expertise-item">
+                <h3>Technical</h3>
+                <ul>
+                    <li>Machine Learning & Deep Learning</li>
+                    <li>Autonomous Systems & AI Agents</li>
+                    <li>Applied ML Projects</li>
+                    <li>Production AI Systems</li>
+                    <li>Data Science & Analysis</li>
+                </ul>
+            </div>
+            <div class="expertise-item">
+                <h3>Domains</h3>
+                <ul>
+                    <li>Logistics & Supply Chain</li>
+                    <li>Business & SMEs</li>
+                    <li>Marketing & Personalization</li>
+                    <li>Education & Learning</li>
+                    <li>Policy & Strategy</li>
+                </ul>
+            </div>
+            <div class="expertise-item">
+                <h3>Core Skills</h3>
+                <ul>
+                    <li>System Architecture & Design</li>
+                    <li>Training & Mentorship</li>
+                    <li>Research & Development</li>
+                    <li>Strategic Advisory</li>
+                    <li>Scalability Engineering</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <p class="section-subtitle">Applied Research & Production Systems</p>
+        
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="🔍 Search projects...">
+        </div>
+        
+        <div class="cards-grid" id="projectsGrid">
+            <div class="card">
+                <h3>🤖 Autonomous Systems for Logistics</h3>
+                <p>AI-driven optimization systems for supply chain and logistics automation. Building production-ready systems that reduce costs and improve delivery efficiency.</p>
+                <div class="card-meta">
+                    <span class="tag">ML</span>
+                    <span class="tag">Optimization</span>
+                    <span class="tag">Enterprise</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>🎓 AI Training Platform</h3>
+                <p>Comprehensive training materials and platform for organizations implementing AI. From fundamentals to production deployment across multiple sectors.</p>
+                <div class="card-meta">
+                    <span class="tag">Education</span>
+                    <span class="tag">Training</span>
+                    <span class="tag">Content</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>💼 Business AI Solutions</h3>
+                <p>Custom AI consulting and implementations for SMEs. Delivering measurable business value through practical, scalable AI solutions tailored to specific needs.</p>
+                <div class="card-meta">
+                    <span class="tag">Consulting</span>
+                    <span class="tag">Implementation</span>
+                    <span class="tag">ROI</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>📋 AI Policy Research</h3>
+                <p>National-level AI strategy and governance research. Building frameworks for responsible, scalable AI development and implementation.</p>
+                <div class="card-meta">
+                    <span class="tag">Policy</span>
+                    <span class="tag">Strategy</span>
+                    <span class="tag">Governance</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications">
+        <h2>Publications & Articles</h2>
+        <p class="section-subtitle">Thought Leadership on AI Systems & Strategy</p>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <h3>Understanding Autonomous Systems Architecture</h3>
+                <p>Deep dive into designing systems that scale. Covers agent architecture, decision-making frameworks, and real-world deployment challenges.</p>
+                <div class="card-meta">
+                    <span class="tag">Architecture</span>
+                    <span class="tag">Systems</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Scaling AI in Enterprise Environments</h3>
+                <p>Lessons from scaling ML systems in production. Technical approaches, organizational challenges, and solutions that work at scale.</p>
+                <div class="card-meta">
+                    <span class="tag">Production</span>
+                    <span class="tag">Engineering</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Policy & Technology: Building Responsible AI</h3>
+                <p>How policy and technology work together to create AI systems that are both innovative and responsible. Governance models and best practices.</p>
+                <div class="card-meta">
+                    <span class="tag">Policy</span>
+                    <span class="tag">Governance</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>From Teaching to Building: My Journey</h3>
+                <p>Reflections on transitioning from training organizations to building production AI systems. Why both matter for ecosystem growth.</p>
+                <div class="card-meta">
+                    <span class="tag">Insights</span>
+                    <span class="tag">Journey</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Let's Connect</h2>
+        <p class="section-subtitle">Interested in Building AI Systems Together?</p>
+        
+        <div class="cards-grid">
+            <div class="card">
+                <h3>📧 Email</h3>
+                <p><a href="mailto:your.email@example.com" style="color: var(--primary); text-decoration: none;">your.email@example.com</a></p>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Response within 2-3 business days</p>
+            </div>
+            <div class="card">
+                <h3>💼 LinkedIn</h3>
+                <p><a href="https://www.linkedin.com/in/your-profile" target="_blank" style="color: var(--primary); text-decoration: none;">Connect on LinkedIn</a></p>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">1-2 business days response</p>
+            </div>
+            <div class="card">
+                <h3>💻 GitHub</h3>
+                <p><a href="https://github.com/Akouaaa" target="_blank" style="color: var(--primary); text-decoration: none;">@Akouaaa</a></p>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Check out my projects and code</p>
+            </div>
+        </div>
+
+        <div class="social-links" style="margin-top: 3rem;">
+            <a href="https://www.linkedin.com/in/your-profile" class="social-link" title="LinkedIn">in</a>
+            <a href="https://github.com/Akouaaa" class="social-link" title="GitHub">gh</a>
+            <a href="mailto:your.email@example.com" class="social-link" title="Email">✉</a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 Akoua Awoudja | Building the future of AI systems</p>
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">
+        AI Systems Engineer | Researcher | Strategist | Builder
+    </p>
+</footer>
+
+<script>
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    
+    // Check for saved theme preference or default to dark mode
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    if (currentTheme === 'light') {
+        document.body.classList.add('light-mode');
+        themeToggle.textContent = '☀️';
+    }
+    
+    themeToggle.addEventListener('click', () => {
+        const isLightMode = document.body.classList.toggle('light-mode');
+        localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
+        themeToggle.textContent = isLightMode ? '☀️' : '🌙';
+    });
+
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    const projectsGrid = document.getElementById('projectsGrid');
+    const cards = projectsGrid.querySelectorAll('.card');
+
+    searchInput.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        
+        cards.forEach(card => {
+            const text = card.textContent.toLowerCase();
+            if (text.includes(searchTerm)) {
+                card.style.display = 'block';
+                card.classList.remove('loading');
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        if (searchTerm === '') {
+            cards.forEach(card => card.style.display = 'block');
+        }
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(section);
+    });
+</script>
+
+</body>
+</html>
