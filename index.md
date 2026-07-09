@@ -44,30 +44,63 @@ Building a **scalable tech company** that develops working AI and autonomous sys
 
 ---
 
-## 🚀 Featured Work
+## 🚀 Featured Projects
 
-### Projects & Research
-- More details on my featured projects coming soon...
-- GitHub repositories showcasing AI implementations
-- Google Colab notebooks with applied research
-- Case studies from training engagements
+Explore my applied research and production AI systems:
 
-### Publications & Thought Leadership
-- [LinkedIn Newsletter](#) — Articles on AI policy, strategy, and applications
-- Research articles on national AI strategies
-- Training materials and educational content
+### [Autonomous Systems for Logistics](./projects/logistics-ai.md)
+AI-driven optimization systems for supply chain and logistics automation.
+
+### [AI Training Platform](./projects/ai-training.md)
+Educational platform and materials for training organizations on applied AI.
+
+### [Business AI Solutions](./projects/business-ai.md)
+Custom AI implementations for SMEs across different sectors.
+
+### [AI Policy Research](./projects/policy-research.md)
+National-level AI strategy and policy research.
+
+**[View All Projects →](./projects/)**
 
 ---
 
-## 📚 Let's Connect
+## 📰 Publications & Thought Leadership
 
-Interested in:
-- **Collaborating** on AI systems and autonomous solutions
-- **Discussing** AI strategy and policy
-- **Learning** more about applied AI
-- **Building** the next generation of scalable AI systems
+### LinkedIn Newsletter
+Regular articles on AI strategy, policy, and practical applications:
+- AI Policy and National Strategies
+- Building Production AI Systems
+- AI Applications Across Sectors
+- Training & Knowledge Transfer
 
-Feel free to reach out! 
+**[Read on LinkedIn →](https://www.linkedin.com/in/your-profile)** *(Update with your LinkedIn URL)*
+
+### Research Articles
+- Coming soon...
+
+**[View All Publications →](./publications/)**
+
+---
+
+## 📚 Blog
+
+Documenting my journey building scalable AI systems:
+
+### Recent Articles
+- [Understanding Autonomous Systems Architecture](./blog/autonomous-systems-architecture.md)
+- [Scaling AI in Enterprise Environments](./blog/scaling-ai-enterprise.md)
+- [Policy & Technology: Building Responsible AI](./blog/responsible-ai-policy.md)
+
+**[Read More Blog Posts →](./blog/)**
+
+---
+
+## 🔗 Connect With Me
+
+- **LinkedIn**: [Akoua Awoudja](https://www.linkedin.com/in/your-profile) — AI Strategy & Policy
+- **GitHub**: [@Akouaaa](https://github.com/Akouaaa) — Code & Projects
+- **Email**: [your.email@example.com](mailto:your.email@example.com)
+- **Twitter/X**: [@YourHandle](https://twitter.com/your-handle) *(Optional)*
 
 ---
 
