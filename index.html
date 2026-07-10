@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,967 +11,794 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --light-bg: #ffffff;
+            --light-text: #1a1a1a;
+            --light-accent: #007bff;
+            --light-card: #f8f9fa;
+            --light-border: #e9ecef;
+            
+            --dark-bg: #0a0e27;
+            --dark-text: #e8eef7;
+            --dark-accent: #00d4ff;
+            --dark-card: #0f1535;
+            --dark-border: #1a1f3a;
+            
+            --primary: #00d4ff;
+            --secondary: #6c5ce7;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0a0e27;
-            color: #e8eef7;
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
             line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
         }
 
+        body.light-theme {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
+
+        /* Header & Navigation */
         header {
-            background-color: #050812;
-            padding: 2rem;
-            text-align: center;
-            border-bottom: 2px solid #00d4ff;
+            background-color: rgba(5, 8, 18, 0.95);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--dark-border);
         }
 
-        h1 {
-            color: #00d4ff;
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
+        body.light-theme header {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--light-border);
         }
 
-        .tagline {
-            color: #9ca3b8;
-            font-size: 1.2rem;
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
         }
 
         nav {
-            background-color: #0f1535;
-            padding: 1rem;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            overflow-x: auto;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
         }
 
         nav a {
-            color: #00d4ff;
+            color: var(--dark-text);
             text-decoration: none;
-            margin: 0 1rem;
-            font-weight: bold;
+            font-weight: 500;
             transition: color 0.3s;
-            display: inline-block;
-            white-space: nowrap;
         }
 
         nav a:hover {
-            color: #6c5ce7;
+            color: var(--primary);
         }
 
+        body.light-theme nav a {
+            color: var(--light-text);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(108, 92, 231, 0.1) 100%);
+            animation: gradientShift 6s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        body.light-theme .hero-content h1 {
+            color: var(--light-accent);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: rgba(232, 238, 247, 0.9);
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        body.light-theme .hero-content p {
+            color: rgba(26, 26, 26, 0.8);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--dark-bg);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+        }
+
+        body.light-theme .btn-primary {
+            color: white;
+        }
+
+        body.light-theme .btn-secondary {
+            color: var(--light-accent);
+            border-color: var(--light-accent);
+        }
+
+        body.light-theme .btn-secondary:hover {
+            background-color: var(--light-accent);
+            color: white;
+        }
+
+        /* Main Container */
         main {
             max-width: 1200px;
-            margin: 2rem auto;
+            margin: 0 auto;
             padding: 0 2rem;
         }
 
+        /* Sections */
         section {
-            background-color: #0f1535;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            border-left: 4px solid #00d4ff;
+            margin: 4rem 0;
         }
 
         section h2 {
-            color: #00d4ff;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #6c5ce7;
-            padding-bottom: 0.5rem;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            text-align: center;
         }
 
-        section h3 {
-            color: #00d4ff;
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
+        body.light-theme section h2 {
+            color: var(--light-accent);
         }
 
-        .cards {
+        /* Cards Grid */
+        .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
 
         .card {
-            background-color: #1a1f3a;
-            padding: 1.5rem;
+            background-color: var(--dark-card);
+            padding: 2rem;
             border-radius: 8px;
-            border-top: 3px solid #00d4ff;
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--dark-border);
+            transition: all 0.3s;
+        }
+
+        body.light-theme .card {
+            background-color: var(--light-card);
+            border-color: var(--light-border);
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
         }
 
         .card h3 {
-            color: #00d4ff;
-            margin-bottom: 0.5rem;
-            margin-top: 0;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        body.light-theme .card h3 {
+            color: var(--light-accent);
         }
 
         .card p {
-            color: #9ca3b8;
-            font-size: 0.95rem;
+            color: rgba(232, 238, 247, 0.8);
+            line-height: 1.6;
         }
 
-        .tags {
-            margin-top: 1rem;
+        body.light-theme .card p {
+            color: rgba(26, 26, 26, 0.7);
+        }
+
+        /* About Section */
+        .about-cards {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        /* Expertise Section */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .expertise-card {
+            background-color: var(--dark-card);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        body.light-theme .expertise-card {
+            background-color: var(--light-card);
+            border-color: var(--light-accent);
+        }
+
+        .expertise-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        body.light-theme .expertise-card h3 {
+            color: var(--light-accent);
+        }
+
+        .expertise-card ul {
+            list-style: none;
+        }
+
+        .expertise-card li {
+            padding: 0.5rem 0;
+            color: rgba(232, 238, 247, 0.8);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        body.light-theme .expertise-card li {
+            color: rgba(26, 26, 26, 0.7);
+        }
+
+        .expertise-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        /* Projects Section */
+        .search-box {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .search-box input {
+            width: 100%;
+            max-width: 500px;
+            padding: 0.75rem 1rem;
+            background-color: var(--dark-card);
+            color: var(--dark-text);
+            border: 1px solid var(--dark-border);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        body.light-theme .search-box input {
+            background-color: var(--light-card);
+            color: var(--light-text);
+            border-color: var(--light-border);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .project-card {
+            background-color: var(--dark-card);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--dark-border);
+            transition: all 0.3s;
+        }
+
+        body.light-theme .project-card {
+            background-color: var(--light-card);
+            border-color: var(--light-border);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
+        }
+
+        .project-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        body.light-theme .project-card h3 {
+            color: var(--light-accent);
+        }
+
+        .project-tags {
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
+            margin-top: 1rem;
         }
 
         .tag {
             background-color: rgba(0, 212, 255, 0.1);
-            color: #00d4ff;
+            color: var(--primary);
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
             font-size: 0.8rem;
         }
 
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
+        body.light-theme .tag {
+            background-color: rgba(0, 123, 255, 0.1);
+            color: var(--light-accent);
         }
 
-        .timeline-item {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-left: 3px solid #00d4ff;
-            padding-left: 1.5rem;
-        }
-
-        .timeline-item:last-child {
-            border-left: 3px solid #6c5ce7;
-        }
-
-        .timeline-date {
-            color: #00d4ff;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .timeline-title {
-            color: #e8eef7;
-            font-weight: bold;
-            margin-top: 0.25rem;
-        }
-
-        .timeline-desc {
-            color: #9ca3b8;
-            font-size: 0.95rem;
-            margin-top: 0.5rem;
-        }
-
-        .media-item {
-            background-color: #1a1f3a;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
+        /* Publications Section */
+        .publication-item {
+            background-color: var(--dark-card);
+            padding: 2rem;
             border-radius: 8px;
-            border-left: 3px solid #00d4ff;
-        }
-
-        .media-title {
-            color: #00d4ff;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .media-link {
-            color: #6c5ce7;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .media-link:hover {
-            color: #00d4ff;
-        }
-
-        .article-category {
-            background-color: #1a1f3a;
-            padding: 1.5rem;
-            border-radius: 8px;
+            border-left: 4px solid var(--primary);
             margin-bottom: 1.5rem;
-            border-left: 4px solid #6c5ce7;
+            transition: all 0.3s;
         }
 
-        .article-category h4 {
-            color: #6c5ce7;
-            margin-bottom: 1rem;
+        body.light-theme .publication-item {
+            background-color: var(--light-card);
+            border-color: var(--light-accent);
         }
 
-        .article-list {
-            list-style: none;
-            padding: 0;
+        .publication-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.1);
         }
 
-        .article-list li {
-            padding: 0.75rem 0;
-            color: #9ca3b8;
-            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        .publication-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
         }
 
-        .article-list li:last-child {
-            border-bottom: none;
+        body.light-theme .publication-item h3 {
+            color: var(--light-accent);
         }
 
-        .article-list a {
-            color: #00d4ff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .article-list a:hover {
-            color: #6c5ce7;
-        }
-
-        .contact-info {
-            text-align: center;
-            margin-top: 1rem;
-        }
-
-        .contact-info a {
-            color: #00d4ff;
-            text-decoration: none;
-            margin: 0 1rem;
-            font-weight: bold;
-            transition: color 0.3s;
-            display: inline-block;
-        }
-
-        .contact-info a:hover {
-            color: #6c5ce7;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: #00d4ff;
-            color: #0a0e27;
-            padding: 0.75rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 1rem;
-            font-weight: bold;
-            transition: background-color 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: #6c5ce7;
-            color: #e8eef7;
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: #00d4ff;
-            border: 2px solid #00d4ff;
-        }
-
-        .btn-secondary:hover {
-            background-color: #00d4ff;
-            color: #0a0e27;
-        }
-
-        footer {
-            background-color: #050812;
-            text-align: center;
-            padding: 2rem;
-            color: #9ca3b8;
-            border-top: 2px solid #00d4ff;
-            margin-top: 3rem;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 3rem 0;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: #9ca3b8;
-            margin-top: 1rem;
-        }
-
-        ul {
-            margin-left: 1.5rem;
-            color: #9ca3b8;
-        }
-
-        ul li {
-            margin: 0.5rem 0;
-        }
-
-        .cta-section {
-            background-color: #1a1f3a;
-            padding: 2rem;
-            border-radius: 8px;
-            text-align: center;
-            margin-top: 1.5rem;
-            border: 2px solid #00d4ff;
-        }
-
-        .cta-section h3 {
-            margin-top: 0;
-        }
-
-        .event-item {
-            background-color: #1a1f3a;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border-radius: 8px;
-            border-left: 3px solid #00d4ff;
-        }
-
-        .event-date {
-            color: #6c5ce7;
-            font-weight: bold;
+        .publication-date {
+            color: var(--secondary);
             font-size: 0.9rem;
-        }
-
-        .event-name {
-            color: #00d4ff;
-            font-weight: bold;
-            margin: 0.5rem 0;
-        }
-
-        .event-desc {
-            color: #9ca3b8;
-            font-size: 0.95rem;
-        }
-
-        .achievement-item {
-            background-color: #1a1f3a;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border-radius: 8px;
-            border-left: 4px solid #6c5ce7;
-        }
-
-        .achievement-title {
-            color: #00d4ff;
-            font-weight: bold;
             margin-bottom: 0.5rem;
         }
 
-        .achievement-desc {
-            color: #9ca3b8;
-            font-size: 0.95rem;
+        /* Contact Section */
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
         }
 
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
         }
 
-        .modal-content {
-            background-color: #0f1535;
-            margin: 5% auto;
+        body.light-theme .contact-link {
+            color: var(--light-accent);
+        }
+
+        .contact-link:hover {
+            transform: scale(1.05);
+            gap: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(5, 8, 18, 0.95);
+            color: rgba(232, 238, 247, 0.7);
+            text-align: center;
             padding: 2rem;
-            border: 2px solid #00d4ff;
-            width: 90%;
-            max-width: 500px;
-            border-radius: 8px;
+            margin-top: 4rem;
+            border-top: 1px solid var(--dark-border);
         }
 
-        .close {
-            color: #00d4ff;
-            float: right;
-            font-size: 2rem;
-            font-weight: bold;
-            cursor: pointer;
+        body.light-theme footer {
+            background-color: rgba(248, 249, 250, 0.95);
+            color: rgba(26, 26, 26, 0.7);
+            border-top: 1px solid var(--light-border);
         }
 
-        .close:hover {
-            color: #6c5ce7;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            color: #00d4ff;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.75rem;
-            background-color: #1a1f3a;
-            color: #e8eef7;
-            border: 1px solid #00d4ff;
-            border-radius: 4px;
-            font-family: inherit;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
-            h1 {
+            .hero-content h1 {
                 font-size: 2rem;
             }
 
-            nav a {
-                margin: 0 0.5rem;
-                font-size: 0.85rem;
+            .hero-content p {
+                font-size: 1rem;
             }
 
-            .cards {
-                grid-template-columns: 1fr;
+            nav {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.9rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
             }
 
             section h2 {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 1rem;
             }
         }
     </style>
 </head>
 <body>
 
+<!-- Header & Navigation -->
 <header>
-    <h1>🚀 Akoua Awoudja</h1>
-    <p class="tagline">AI Systems Engineer | Researcher | Strategist | Builder</p>
+    <div class="header-container">
+        <a href="#" class="logo">🚀 Akoua</a>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#expertise">Expertise</a>
+            <a href="#projects">Projects</a>
+            <a href="#publications">Publications</a>
+            <a href="#contact">Contact</a>
+            <button class="theme-toggle" id="themeToggle">🌙</button>
+        </nav>
+    </div>
 </header>
 
-<nav>
-    <a href="#about">About</a>
-    <a href="#experiences">Experiences</a>
-    <a href="#education">Études</a>
-    <a href="#media">Médias</a>
-    <a href="#events">Événements</a>
-    <a href="#achievements">Réalisations</a>
-    <a href="#articles">Articles</a>
-    <a href="#emission">Émission</a>
-    <a href="#rdv">Prendre RDV</a>
-    <a href="#contact">Contact</a>
-</nav>
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>AI Systems Engineer & Builder</h1>
+        <p>Building scalable, production-grade AI systems that solve real-world problems</p>
+        <div class="cta-buttons">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+        </div>
+    </div>
+</section>
 
 <main>
-    <!-- Hero Section -->
-    <section class="hero">
-        <h2>Building Scalable AI Systems for Real-World Impact</h2>
-        <p>Transforming AI research into production-grade systems that solve real problems across industries</p>
-        <a href="#experiences" class="btn">Découvrir Mon Parcours</a>
-    </section>
-
     <!-- About Section -->
     <section id="about">
-        <h2>À Propos</h2>
-        <p>Je suis un AI Systems Engineer focused on building scalable, production-grade AI systems that solve real-world problems.</p>
-        
-        <div class="cards">
+        <h2>About My Journey</h2>
+        <div class="cards-grid about-cards">
             <div class="card">
                 <h3>🎓 Education</h3>
-                <p>Master's degree in AI/ML with deep expertise in machine learning, deep learning, and autonomous systems architecture.</p>
+                <p>Master's degree in AI & Machine Learning with deep expertise in autonomous systems architecture and deep learning.</p>
             </div>
             <div class="card">
-                <h3>👥 Formation</h3>
-                <p>3+ ans formant des organisations en travers la logistique, business, marketing, et éducation sur l'IA appliquée.</p>
+                <h3>👥 Training & Mentoring</h3>
+                <p>3+ years training organizations and professionals across logistics, business, marketing, and education on applied AI.</p>
             </div>
             <div class="card">
-                <h3>📋 Politique</h3>
-                <p>Travail sur les politiques d'IA et stratégies nationales avec leadership pensé sur le développement d'IA responsable.</p>
+                <h3>🏗️ Building Systems</h3>
+                <p>Designing and deploying production-ready AI systems with focus on scalability and real-world impact.</p>
             </div>
             <div class="card">
-                <h3>🚀 Construction</h3>
-                <p>Actuellement focused sur la création de systèmes d'IA production-ready et solutions scalables.</p>
+                <h3>📊 Policy & Strategy</h3>
+                <p>Contributing to national AI strategies and governance frameworks with thought leadership on responsible AI.</p>
+            </div>
+            <div class="card">
+                <h3>🌍 Global Impact</h3>
+                <p>Speaking at international conferences and working with governments and enterprises on AI transformation.</p>
+            </div>
+            <div class="card">
+                <h3>💡 Innovation</h3>
+                <p>Patents in autonomous systems approaches and proprietary frameworks for scalable AI implementation.</p>
             </div>
         </div>
     </section>
 
-    <!-- Experiences Section -->
-    <section id="experiences">
-        <h2>📍 Parcours Professionnel (2015-2025)</h2>
-        <p>Timeline de mon évolution professionnelle dans le domaine de l'IA et de la technologie:</p>
-        
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-date">2015-2018</div>
-                <div class="timeline-title">Formation & Fondations</div>
-                <div class="timeline-desc">Études en informatique et débuts en machine learning. Développement des bases théoriques et pratiques.</div>
+    <!-- Expertise Section -->
+    <section id="expertise">
+        <h2>My Expertise</h2>
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <h3>🔧 Technical Skills</h3>
+                <ul>
+                    <li>Machine Learning & Deep Learning</li>
+                    <li>Autonomous Systems & AI Agents</li>
+                    <li>ML Production Systems</li>
+                    <li>Data Architecture & Optimization</li>
+                </ul>
             </div>
-
-            <div class="timeline-item">
-                <div class="timeline-date">2018-2020</div>
-                <div class="timeline-title">Master AI/ML</div>
-                <div class="timeline-desc">Obtention du Master's degree. Recherche appliquée en systèmes autonomes et optimisation.</div>
+            <div class="expertise-card">
+                <h3>📈 Domain Knowledge</h3>
+                <ul>
+                    <li>Logistics & Supply Chain</li>
+                    <li>Business & SME Solutions</li>
+                    <li>Marketing & Personalization</li>
+                    <li>Education & Training</li>
+                </ul>
             </div>
-
-            <div class="timeline-item">
-                <div class="timeline-date">2020-2023</div>
-                <div class="timeline-title">Entraîneur & Formateur</div>
-                <div class="timeline-desc">3 ans d'expérience en formation d'organisations. Training sur l'IA appliquée dans 5+ secteurs (logistique, business, marketing, éducation).</div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-date">2023-Présent</div>
-                <div class="timeline-title">AI Systems Engineer & Builder</div>
-                <div class="timeline-desc">Construction de systèmes d'IA production-ready. Focus sur les solutions autonomes scalables pour les écosystèmes d'entreprise.</div>
+            <div class="expertise-card">
+                <h3>⭐ Core Competencies</h3>
+                <ul>
+                    <li>System Architecture & Design</li>
+                    <li>Strategic Advisory</li>
+                    <li>Knowledge Transfer</li>
+                    <li>Research & Implementation</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- Education & Certifications Section -->
-    <section id="education">
-        <h2>🎓 Bourses, Études & Certifications</h2>
-        
-        <h3>Diplômes</h3>
-        <div class="cards">
-            <div class="card">
-                <h3>Master's Degree - AI/ML</h3>
-                <p>Spécialisation: Systèmes autonomes, Deep Learning, Optimisation</p>
-                <div class="tags">
+    <!-- Featured Projects Section -->
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="search-box">
+            <input type="text" id="projectSearch" placeholder="Search projects...">
+        </div>
+        <div class="cards-grid" id="projectsGrid">
+            <div class="project-card" data-project="logistics">
+                <h3>🚚 Autonomous Logistics System</h3>
+                <p>AI-driven optimization system for supply chain automation and route optimization, reducing operational costs by 25-35%.</p>
+                <div class="project-tags">
                     <span class="tag">AI/ML</span>
-                    <span class="tag">Recherche</span>
-                </div>
-            </div>
-            <div class="card">
-                <h3>Licence - Informatique</h3>
-                <p>Fondations en programmation, algorithmes, structures de données</p>
-                <div class="tags">
-                    <span class="tag">Informatique</span>
-                    <span class="tag">Théorie</span>
-                </div>
-            </div>
-        </div>
-
-        <h3>Certifications</h3>
-        <div class="cards">
-            <div class="card">
-                <h3>Professional AI Developer</h3>
-                <p>Certification en développement d'IA production-ready</p>
-                <div class="tags">
+                    <span class="tag">Optimization</span>
                     <span class="tag">Production</span>
                 </div>
             </div>
-            <div class="card">
-                <h3>Advanced ML Systems</h3>
-                <p>Spécialisation en systèmes de machine learning scalables</p>
-                <div class="tags">
-                    <span class="tag">Scalabilité</span>
+            <div class="project-card" data-project="training">
+                <h3>📚 AI Training Platform</h3>
+                <p>Comprehensive educational platform for organizations to build AI capabilities across teams with hands-on implementations.</p>
+                <div class="project-tags">
+                    <span class="tag">Education</span>
+                    <span class="tag">Training</span>
+                    <span class="tag">Consulting</span>
                 </div>
             </div>
-        </div>
-
-        <h3>Bourses & Distinctions</h3>
-        <div class="cards">
-            <div class="card">
-                <h3>Bourse d'Excellence - Recherche</h3>
-                <p>Recognition pour la recherche innovante en systèmes autonomes</p>
-            </div>
-            <div class="card">
-                <h3>Leadership Award</h3>
-                <p>Pour contribution exceptionnelle à la formation et développement d'écosystème AI</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Media Section -->
-    <section id="media">
-        <h2>📺 Passages Médias</h2>
-        
-        <h3>🌍 Médias Internationaux</h3>
-        <div class="media-item">
-            <div class="media-title">AI Systems Architecture - Global Tech Podcast</div>
-            <p>Discussion sur la conception des systèmes autonomes à l'échelle mondiale</p>
-            <a href="#" class="media-link">🎙️ Écouter l'épisode</a>
-        </div>
-        <div class="media-item">
-            <div class="media-title">Building Responsible AI - International Conference</div>
-            <p>Conférence keynote sur la gouvernance de l'IA responsable</p>
-            <a href="#" class="media-link">📹 Regarder la vidéo</a>
-        </div>
-        <div class="media-item">
-            <div class="media-title">Machine Learning Production Challenges - Tech Magazine</div>
-            <p>Article dans une publication technique internationale</p>
-            <a href="#" class="media-link">📄 Lire l'article</a>
-        </div>
-
-        <h3>🇫🇷 Médias Nationaux</h3>
-        <div class="media-item">
-            <div class="media-title">L'IA dans l'Écosystème Africain - Radio Nationale</div>
-            <p>Débat sur les stratégies nationales d'IA</p>
-            <a href="#" class="media-link">🎙️ Écouter</a>
-        </div>
-        <div class="media-item">
-            <div class="media-title">Systèmes Autonomes & Transformations Digitales - TV</div>
-            <p>Interview sur la transformation numérique et l'IA appliquée</p>
-            <a href="#" class="media-link">📹 Regarder</a>
-        </div>
-        <div class="media-item">
-            <div class="media-title">Formation AI pour les PME - Journal National</div>
-            <p>Article sur l'accessibilité de l'IA pour les petites et moyennes entreprises</p>
-            <a href="#" class="media-link">📄 Lire</a>
-        </div>
-    </section>
-
-    <!-- Events Section -->
-    <section id="events">
-        <h2>🎤 Interventions aux Événements</h2>
-        
-        <div class="event-item">
-            <div class="event-date">2025 - Présent</div>
-            <div class="event-name">African Tech Conference</div>
-            <div class="event-desc">Keynote: "Building Scalable AI for African Markets"</div>
-        </div>
-
-        <div class="event-item">
-            <div class="event-date">2024</div>
-            <div class="event-name">Global AI Policy Forum</div>
-            <div class="event-desc">Panelist: National AI Strategies and Governance</div>
-        </div>
-
-        <div class="event-item">
-            <div class="event-date">2024</div>
-            <div class="event-name">Enterprise ML Workshop Series</div>
-            <div class="event-desc">Facilitator: Production ML Systems (6 cities)</div>
-        </div>
-
-        <div class="event-item">
-            <div class="event-date">2023</div>
-            <div class="event-name">AI Training Summit</div>
-            <div class="event-desc">Speaker: "From Teaching to Building"</div>
-        </div>
-
-        <div class="event-item">
-            <div class="event-date">2023</div>
-            <div class="event-name">SME Digital Transformation Conference</div>
-            <div class="event-desc">Workshop: AI Solutions for Business</div>
-        </div>
-
-        <div class="event-item">
-            <div class="event-date">2022</div>
-            <div class="event-name">International AI Symposium</div>
-            <div class="event-desc">Presenter: Autonomous Systems Architecture</div>
-        </div>
-    </section>
-
-    <!-- Achievements Section -->
-    <section id="achievements">
-        <h2>🏆 Réalisations Clés</h2>
-        
-        <div class="achievement-item">
-            <div class="achievement-title">📊 Training Impact</div>
-            <div class="achievement-desc">3+ ans de formation | 500+ professionnels formés | 50+ organisations | 5+ secteurs couverts</div>
-        </div>
-
-        <div class="achievement-item">
-            <div class="achievement-title">🤖 Production Systems</div>
-            <div class="achievement-desc">10+ systèmes autonomes déployés | Réductions de coûts: 20-35% | Amélioration d'efficacité: 15-40%</div>
-        </div>
-
-        <div class="achievement-item">
-            <div class="achievement-title">📚 Knowledge Transfer</div>
-            <div class="achievement-desc">LinkedIn Newsletter with 10K+ followers | 50+ articles published | 100+ citations en académie</div>
-        </div>
-
-        <div class="achievement-item">
-            <div class="achievement-title">🌍 Policy Influence</div>
-            <div class="achievement-desc">Contributions à 3+ stratégies nationales d'IA | Advisor pour gouvernements | Speaking engagements internationaux</div>
-        </div>
-
-        <div class="achievement-item">
-            <div class="achievement-title">🔬 Research</div>
-            <div class="achievement-desc">Publications en AI governance | Research papers en systèmes autonomes | Collaboration internationale</div>
-        </div>
-
-        <div class="achievement-item">
-            <div class="achievement-title">💡 Innovation</div>
-            <div class="achievement-desc">3 brevets en approche de systèmes autonomes | Frameworks propriétaires pour scalabilité | Méthodologies d'implémentation</div>
-        </div>
-    </section>
-
-    <!-- Articles Section -->
-    <section id="articles">
-        <h2>📝 Mes Articles</h2>
-        <p>Retrouvez mes articles organisés par catégories:</p>
-
-        <div class="article-category">
-            <h4>🏗️ Architecture & Systèmes</h4>
-            <ul class="article-list">
-                <li><a href="#">Understanding Autonomous Systems Architecture</a></li>
-                <li><a href="#">Designing Systems That Scale</a></li>
-                <li><a href="#">Microservices vs Monolithic: When to Use What</a></li>
-                <li><a href="#">Building Robust ML Pipelines</a></li>
-            </ul>
-        </div>
-
-        <div class="article-category">
-            <h4>🚀 Production & Engineering</h4>
-            <ul class="article-list">
-                <li><a href="#">Scaling AI in Enterprise Environments</a></li>
-                <li><a href="#">ML Model Deployment Best Practices</a></li>
-                <li><a href="#">Monitoring and Observability for AI Systems</a></li>
-                <li><a href="#">Production ML: From Notebook to Scale</a></li>
-            </ul>
-        </div>
-
-        <div class="article-category">
-            <h4>📋 Politique & Gouvernance</h4>
-            <ul class="article-list">
-                <li><a href="#">Policy & Technology: Building Responsible AI</a></li>
-                <li><a href="#">National AI Strategies: A Global Overview</a></li>
-                <li><a href="#">AI Governance Frameworks That Work</a></li>
-                <li><a href="#">Ethical AI Development Across Sectors</a></li>
-            </ul>
-        </div>
-
-        <div class="article-category">
-            <h4>🎓 Formation & Éducation</h4>
-            <ul class="article-list">
-                <li><a href="#">From Teaching to Building: My Journey</a></li>
-                <li><a href="#">Training vs Building: Why Both Matter</a></li>
-                <li><a href="#">AI Education for SMEs</a></li>
-                <li><a href="#">Building AI Talent Pipelines</a></li>
-            </ul>
-        </div>
-
-        <div class="article-category">
-            <h4>💼 Business & Applications</h4>
-            <ul class="article-list">
-                <li><a href="#">AI Applications in Logistics</a></li>
-                <li><a href="#">Marketing Personalization with AI</a></li>
-                <li><a href="#">AI ROI: Measuring Real Impact</a></li>
-                <li><a href="#">Digital Transformation Through AI</a></li>
-            </ul>
-        </div>
-
-        <div class="cta-section">
-            <h3>📰 Retrouvez tous mes articles</h3>
-            <p>LinkedIn Newsletter | Medium | Substack | Blog Personnel</p>
-            <a href="https://www.linkedin.com/in/your-profile" class="btn" target="_blank">Suivre sur LinkedIn</a>
-        </div>
-    </section>
-
-    <!-- Emission Section -->
-    <section id="emission">
-        <h2>🎙️ Mon Émission</h2>
-        <p>Discussions approfondies sur l'IA, l'innovation et les stratégies de transformation digitale:</p>
-        
-        <div class="card" style="grid-column: 1 / -1; background-color: #1a1f3a; border-left: 4px solid #6c5ce7;">
-            <h3>AI Systems & Strategy Podcast</h3>
-            <p>Un podcast dédié aux systèmes d'IA en production, aux stratégies d'implémentation, et aux défis de la scalabilité. Discussions avec des experts, entrepreneurs, et décideurs politiques.</p>
-            <div class="tags">
-                <span class="tag">Podcast</span>
-                <span class="tag">AI</span>
-                <span class="tag">Stratégie</span>
-                <span class="tag">Hebdomadaire</span>
-            </div>
-            <div style="margin-top: 1.5rem;">
-                <a href="https://podcast.example.com" class="btn" target="_blank">Écouter sur Spotify</a>
-                <a href="https://podcast.example.com" class="btn btn-secondary" target="_blank">Voir tous les épisodes</a>
-            </div>
-        </div>
-
-        <h3 style="margin-top: 2rem;">Derniers Épisodes</h3>
-        <div class="cards">
-            <div class="card">
-                <h3>Ep. 50 - Building AI Teams</h3>
-                <p>Comment construire et maintenir une équipe de haut niveau en AI? Discussion avec 3 CTO's d'entreprises Fortune 500.</p>
-                <div class="tags">
-                    <span class="tag">Management</span>
-                    <span class="tag">Talent</span>
+            <div class="project-card" data-project="business">
+                <h3>💼 Enterprise AI Solutions</h3>
+                <p>Custom AI implementations for SMEs including predictive analytics, automation, and decision support systems.</p>
+                <div class="project-tags">
+                    <span class="tag">Enterprise</span>
+                    <span class="tag">Custom Solutions</span>
+                    <span class="tag">Implementation</span>
                 </div>
             </div>
-            <div class="card">
-                <h3>Ep. 49 - African AI Landscape</h3>
-                <p>L'état et l'avenir de l'IA en Afrique. Stratégies de développement et opportunités entrepreneuriales.</p>
-                <div class="tags">
-                    <span class="tag">Afrique</span>
-                    <span class="tag">Stratégie</span>
-                </div>
-            </div>
-            <div class="card">
-                <h3>Ep. 48 - Model Deployment at Scale</h3>
-                <p>Comment déployer des modèles ML à grande échelle? Avec des engineering leaders de startups AI.</p>
-                <div class="tags">
-                    <span class="tag">Engineering</span>
-                    <span class="tag">Production</span>
-                </div>
-            </div>
-            <div class="card">
-                <h3>Ep. 47 - AI Policy Debates</h3>
-                <p>Débat: Régulation vs Innovation. Perspectives de gouvernements, entreprises, et chercheurs.</p>
-                <div class="tags">
+            <div class="project-card" data-project="policy">
+                <h3>🏛️ AI Policy Research</h3>
+                <p>National-level AI strategy research and governance framework development with government stakeholders.</p>
+                <div class="project-tags">
                     <span class="tag">Policy</span>
-                    <span class="tag">Gouvernance</span>
+                    <span class="tag">Strategy</span>
+                    <span class="tag">Research</span>
+                </div>
+            </div>
+            <div class="project-card" data-project="agents">
+                <h3>🤖 Autonomous Agents Framework</h3>
+                <p>Proprietary framework for building and deploying intelligent agents with advanced decision-making capabilities.</p>
+                <div class="project-tags">
+                    <span class="tag">AI Agents</span>
+                    <span class="tag">Architecture</span>
+                    <span class="tag">Framework</span>
+                </div>
+            </div>
+            <div class="project-card" data-project="analytics">
+                <h3>📊 Advanced Analytics Platform</h3>
+                <p>End-to-end analytics platform for business intelligence and real-time decision support across enterprises.</p>
+                <div class="project-tags">
+                    <span class="tag">Analytics</span>
+                    <span class="tag">BI</span>
+                    <span class="tag">Real-time</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- RDV Section -->
-    <section id="rdv">
-        <h2>📅 Prendre Rendez-Vous</h2>
-        <p>Intéressé par une collaboration? Je suis disponible pour:</p>
-
-        <div class="cards">
-            <div class="cta-section" style="border: none; grid-column: auto;">
-                <h3>💼 Business Consultation</h3>
-                <p>Discuter de projets AI, implémentation de systèmes autonomes, ou stratégies de transformation.</p>
-                <button class="btn" onclick="openModal('business')">Prendre RDV</button>
-            </div>
-            <div class="cta-section" style="border: none; grid-column: auto;">
-                <h3>👥 Mentoring</h3>
-                <p>Mentorat pour professionals, entrepreneurs, ou étudiants en AI/ML.</p>
-                <button class="btn" onclick="openModal('mentoring')">Prendre RDV</button>
-            </div>
-            <div class="cta-section" style="border: none; grid-column: auto;">
-                <h3>🎤 Speaking</h3>
-                <p>Conférences, webinaires, ou interventions aux événements.</p>
-                <button class="btn" onclick="openModal('speaking')">Me Contacter</button>
-            </div>
+    <!-- Publications Section -->
+    <section id="publications">
+        <h2>Publications & Articles</h2>
+        <div class="publication-item">
+            <h3>Building Scalable AI Systems for Real-World Impact</h3>
+            <div class="publication-date">Published on LinkedIn Newsletter</div>
+            <p>Insights on designing production-grade AI systems that scale across enterprises and solve real business challenges.</p>
+        </div>
+        <div class="publication-item">
+            <h3>Understanding Autonomous Systems Architecture</h3>
+            <div class="publication-date">Published on Medium</div>
+            <p>Deep dive into designing autonomous systems that make intelligent decisions in dynamic environments.</p>
+        </div>
+        <div class="publication-item">
+            <h3>Policy & Technology: Building Responsible AI</h3>
+            <div class="publication-date">Published on LinkedIn Newsletter</div>
+            <p>How policy and technology must work together to create AI systems that are both powerful and responsible.</p>
+        </div>
+        <div class="publication-item">
+            <h3>Scaling AI in Enterprise Environments</h3>
+            <div class="publication-date">Published on Substack</div>
+            <p>Lessons learned from implementing and scaling machine learning systems in production enterprise environments.</p>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
-        <h2>📧 Contact</h2>
-        <p>Plusieurs façons de me contacter:</p>
-        
-        <div class="contact-info">
-            <a href="mailto:your.email@example.com">📧 Email</a>
-            <a href="https://www.linkedin.com/in/your-profile" target="_blank">💼 LinkedIn</a>
-            <a href="https://github.com/Akouaaa" target="_blank">💻 GitHub</a>
-            <a href="https://twitter.com/your-handle" target="_blank">𝕏 Twitter</a>
-        </div>
-
-        <div class="cards" style="margin-top: 2rem;">
-            <div class="card">
-                <h3>Email Professionnel</h3>
-                <p><a href="mailto:your.email@example.com" style="color: #00d4ff;">your.email@example.com</a></p>
-                <p style="color: #9ca3b8; font-size: 0.9rem; margin-top: 0.5rem;">Réponse: 2-3 jours ouvrables</p>
-            </div>
-            <div class="card">
-                <h3>LinkedIn</h3>
-                <p><a href="https://www.linkedin.com/in/your-profile" style="color: #00d4ff;" target="_blank">Akoua Awoudja</a></p>
-                <p style="color: #9ca3b8; font-size: 0.9rem; margin-top: 0.5rem;">Messages rapides: 1-2 jours</p>
-            </div>
-            <div class="card">
-                <h3>GitHub</h3>
-                <p><a href="https://github.com/Akouaaa" style="color: #00d4ff;" target="_blank">@Akouaaa</a></p>
-                <p style="color: #9ca3b8; font-size: 0.9rem; margin-top: 0.5rem;">Issues & Projects</p>
-            </div>
+        <h2>Let's Connect</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: rgba(232, 238, 247, 0.8);">
+            Interested in collaboration, consulting, speaking, or just want to chat about AI? Reach out!
+        </p>
+        <div class="contact-links">
+            <a href="mailto:akoua.awoudja@gmail.com" class="contact-link">
+                <span>📧</span> Email
+            </a>
+            <a href="https://www.linkedin.com/in/akoua-awoudja" target="_blank" class="contact-link">
+                <span>💼</span> LinkedIn
+            </a>
+            <a href="https://github.com/Akouaaa" target="_blank" class="contact-link">
+                <span>💻</span> GitHub
+            </a>
+            <a href="https://twitter.com/akouaaa" target="_blank" class="contact-link">
+                <span>𝕏</span> Twitter
+            </a>
         </div>
     </section>
-
 </main>
 
+<!-- Footer -->
 <footer>
-    <p>© 2026 Akoua Awoudja | Building the future of AI systems</p>
-    <p style="margin-top: 0.5rem; font-size: 0.9rem;">AI Systems Engineer | Researcher | Strategist | Builder | Educator</p>
+    <p>© 2026 Akoua Awoudja | AI Systems Engineer</p>
+    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Building scalable AI systems for real-world impact</p>
 </footer>
 
-<!-- Modal for RDV -->
-<div id="rdvModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2 style="color: #00d4ff; margin-bottom: 1rem;" id="modalTitle">Prendre Rendez-Vous</h2>
-        
-        <form id="rdvForm">
-            <div class="form-group">
-                <label for="name">Votre Nom *</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-
-            <div class="form-group">
-                <label for="email">Votre Email *</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <div class="form-group">
-                <label for="phone">Téléphone (optionnel)</label>
-                <input type="tel" id="phone" name="phone">
-            </div>
-
-            <div class="form-group">
-                <label for="type">Type de RDV *</label>
-                <select id="type" name="type" required>
-                    <option value="">Sélectionnez...</option>
-                    <option value="business">Business Consultation</option>
-                    <option value="mentoring">Mentoring</option>
-                    <option value="speaking">Speaking Engagement</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="message">Votre Message *</label>
-                <textarea id="message" name="message" required></textarea>
-            </div>
-
-            <button type="submit" class="btn" style="width: 100%;">Envoyer</button>
-        </form>
-    </div>
-</div>
-
 <script>
-    function openModal(type) {
-        const modal = document.getElementById('rdvModal');
-        const title = document.getElementById('modalTitle');
-        const typeSelect = document.getElementById('type');
-        
-        if (type === 'business') {
-            title.textContent = 'Business Consultation';
-            typeSelect.value = 'business';
-        } else if (type === 'mentoring') {
-            title.textContent = 'Mentorat';
-            typeSelect.value = 'mentoring';
-        } else if (type === 'speaking') {
-            title.textContent = 'Speaking Engagement';
-            typeSelect.value = 'speaking';
-        }
-        
-        modal.style.display = 'block';
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
+
+    // Load theme preference from localStorage
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-theme');
+        themeToggle.textContent = '☀️';
     }
 
-    function closeModal() {
-        const modal = document.getElementById('rdvModal');
-        modal.style.display = 'none';
-    }
-
-    window.onclick = function(event) {
-        const modal = document.getElementById('rdvModal');
-        if (event.target == modal) {
-            modal.style.display = 'none';
-        }
-    }
-
-    document.getElementById('rdvForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        
-        // Create mailto link
-        const subject = 'RDV Request: ' + document.getElementById('type').value;
-        const body = `Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
-        
-        window.location.href = `mailto:your.email@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        
-        closeModal();
-        this.reset();
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('light-theme');
+        const isLight = document.body.classList.contains('light-theme');
+        themeToggle.textContent = isLight ? '☀️' : '🌙';
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
 
-    // Smooth scroll
+    // Project Search
+    const projectSearch = document.getElementById('projectSearch');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    projectSearch.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        projectCards.forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+        });
+    });
+
+    // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
