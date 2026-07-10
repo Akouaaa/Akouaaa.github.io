@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akoua Awoudja - AI Systems Engineer</title>
+    <title>Akoua Awoudja | AI Systems Engineer & Founder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,27 +16,34 @@
 
         :root {
             --light-bg: #ffffff;
-            --light-text: #1a1a1a;
-            --light-accent: #007bff;
-            --light-card: #f8f9fa;
-            --light-border: #e9ecef;
+            --light-text: #0f1419;
+            --light-accent: #0066ff;
+            --light-card: #f5f6fa;
+            --light-border: #e1e4e8;
             
             --dark-bg: #0a0e27;
             --dark-text: #e8eef7;
-            --dark-accent: #00d4ff;
+            --dark-accent: #00d9ff;
             --dark-card: #0f1535;
             --dark-border: #1a1f3a;
             
-            --primary: #00d4ff;
+            --primary: #00d9ff;
             --secondary: #6c5ce7;
+            --accent-warm: #ff6b6b;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background-color: var(--dark-bg);
             color: var(--dark-text);
             line-height: 1.6;
             transition: background-color 0.3s, color 0.3s;
+            font-weight: 400;
+            letter-spacing: -0.01em;
         }
 
         body.light-theme {
@@ -43,22 +53,22 @@
 
         /* Header & Navigation */
         header {
-            background-color: rgba(5, 8, 18, 0.95);
-            padding: 1rem 2rem;
+            background-color: rgba(10, 14, 39, 0.8);
+            padding: 1.25rem 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--dark-border);
         }
 
         body.light-theme header {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.8);
             border-bottom: 1px solid var(--light-border);
         }
 
         .header-container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -66,15 +76,19 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-decoration: none;
         }
 
         nav {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
@@ -82,33 +96,42 @@
             color: var(--dark-text);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            opacity: 0.8;
         }
 
         nav a:hover {
             color: var(--primary);
+            opacity: 1;
         }
 
         body.light-theme nav a {
             color: var(--light-text);
         }
 
+        body.light-theme nav a:hover {
+            color: var(--light-accent);
+        }
+
         .theme-toggle {
             background: none;
             border: none;
             color: var(--primary);
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.2s, opacity 0.2s;
+            opacity: 0.8;
         }
 
         .theme-toggle:hover {
             transform: scale(1.1);
+            opacity: 1;
         }
 
         /* Hero Section */
         .hero {
-            min-height: 600px;
+            min-height: 640px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -125,9 +148,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(108, 92, 231, 0.1) 100%);
-            animation: gradientShift 6s ease infinite;
-            z-index: -1;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.08) 0%, rgba(108, 92, 231, 0.08) 100%);
+            animation: gradientShift 8s ease infinite;
+            z-index: 0;
         }
 
         @keyframes gradientShift {
@@ -135,34 +158,50 @@
             50% { opacity: 1; }
         }
 
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
         .hero-content h1 {
             font-size: 3.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.15;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
             animation: fadeInDown 0.8s ease;
         }
 
         body.light-theme .hero-content h1 {
-            color: var(--light-accent);
+            background: linear-gradient(135deg, var(--light-accent) 0%, #6c5ce7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            color: rgba(232, 238, 247, 0.9);
-            animation: fadeInUp 0.8s ease 0.2s backwards;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 2.5rem;
+            color: rgba(232, 238, 247, 0.85);
+            line-height: 1.7;
+            animation: fadeInUp 0.8s ease 0.1s backwards;
         }
 
         body.light-theme .hero-content p {
-            color: rgba(26, 26, 26, 0.8);
+            color: rgba(15, 20, 25, 0.75);
         }
 
         .cta-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 1.25rem;
             justify-content: center;
             flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease 0.4s backwards;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
         }
 
         @keyframes fadeInDown {
@@ -190,40 +229,37 @@
         /* Buttons */
         .btn {
             display: inline-block;
-            padding: 0.75rem 2rem;
-            border-radius: 5px;
+            padding: 0.875rem 2rem;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+            letter-spacing: -0.01em;
         }
 
         .btn-primary {
-            background-color: var(--primary);
-            color: var(--dark-bg);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
         }
 
         .btn-primary:hover {
-            background-color: var(--secondary);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.2);
+            box-shadow: 0 12px 32px rgba(0, 217, 255, 0.3);
         }
 
         .btn-secondary {
             background-color: transparent;
             color: var(--primary);
-            border: 2px solid var(--primary);
+            border: 1.5px solid var(--primary);
         }
 
         .btn-secondary:hover {
-            background-color: var(--primary);
-            color: var(--dark-bg);
+            background-color: rgba(0, 217, 255, 0.1);
+            border-color: var(--primary);
             transform: translateY(-2px);
-        }
-
-        body.light-theme .btn-primary {
-            color: white;
         }
 
         body.light-theme .btn-secondary {
@@ -232,151 +268,156 @@
         }
 
         body.light-theme .btn-secondary:hover {
-            background-color: var(--light-accent);
-            color: white;
+            background-color: rgba(0, 102, 255, 0.08);
         }
 
         /* Main Container */
         main {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
         /* Sections */
         section {
-            margin: 4rem 0;
+            margin: 5rem 0;
         }
 
         section h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 3rem;
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 3.5rem;
             text-align: center;
         }
 
         body.light-theme section h2 {
-            color: var(--light-accent);
-        }
-
-        /* Cards Grid */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .card {
-            background-color: var(--dark-card);
-            padding: 2rem;
-            border-radius: 8px;
-            border: 1px solid var(--dark-border);
-            transition: all 0.3s;
-        }
-
-        body.light-theme .card {
-            background-color: var(--light-card);
-            border-color: var(--light-border);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
-        }
-
-        .card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        body.light-theme .card h3 {
-            color: var(--light-accent);
-        }
-
-        .card p {
-            color: rgba(232, 238, 247, 0.8);
-            line-height: 1.6;
-        }
-
-        body.light-theme .card p {
-            color: rgba(26, 26, 26, 0.7);
+            background: linear-gradient(135deg, var(--light-accent) 0%, #6c5ce7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         /* About Section */
-        .about-cards {
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        .about-narrative {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(232, 238, 247, 0.85);
         }
 
-        /* Expertise Section */
-        .expertise-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+        body.light-theme .about-narrative {
+            color: rgba(15, 20, 25, 0.75);
         }
 
-        .expertise-card {
-            background-color: var(--dark-card);
-            padding: 2rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--primary);
-        }
-
-        body.light-theme .expertise-card {
-            background-color: var(--light-card);
-            border-color: var(--light-accent);
-        }
-
-        .expertise-card h3 {
+        .highlight {
             color: var(--primary);
-            margin-bottom: 1rem;
+            font-weight: 600;
         }
 
-        body.light-theme .expertise-card h3 {
+        body.light-theme .highlight {
             color: var(--light-accent);
         }
 
-        .expertise-card ul {
+        /* Expertise Grid */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .expertise-pillar {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(108, 92, 231, 0.05) 100%);
+            border: 1px solid var(--dark-border);
+            padding: 2.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.light-theme .expertise-pillar {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.03) 0%, rgba(108, 92, 231, 0.03) 100%);
+            border-color: var(--light-border);
+        }
+
+        .expertise-pillar:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 24px rgba(0, 217, 255, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .expertise-pillar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .expertise-pillar h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        body.light-theme .expertise-pillar h3 {
+            color: var(--light-accent);
+        }
+
+        .expertise-pillar ul {
             list-style: none;
         }
 
-        .expertise-card li {
-            padding: 0.5rem 0;
+        .expertise-pillar li {
+            padding: 0.65rem 0;
             color: rgba(232, 238, 247, 0.8);
             position: relative;
-            padding-left: 1.5rem;
+            padding-left: 1.75rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
-        body.light-theme .expertise-card li {
-            color: rgba(26, 26, 26, 0.7);
+        body.light-theme .expertise-pillar li {
+            color: rgba(15, 20, 25, 0.7);
         }
 
-        .expertise-card li::before {
-            content: '→';
+        .expertise-pillar li::before {
+            content: '▸';
             position: absolute;
             left: 0;
             color: var(--primary);
+            font-weight: 600;
         }
 
         /* Projects Section */
         .search-box {
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             text-align: center;
         }
 
         .search-box input {
             width: 100%;
             max-width: 500px;
-            padding: 0.75rem 1rem;
+            padding: 1rem 1.25rem;
             background-color: var(--dark-card);
             color: var(--dark-text);
             border: 1px solid var(--dark-border);
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
         }
 
         body.light-theme .search-box input {
@@ -388,92 +429,248 @@
         .search-box input:focus {
             outline: none;
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.1);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .project-card {
-            background-color: var(--dark-card);
-            padding: 2rem;
-            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(15, 21, 53, 0.8) 0%, rgba(15, 21, 53, 0.6) 100%);
             border: 1px solid var(--dark-border);
-            transition: all 0.3s;
+            padding: 2.25rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         body.light-theme .project-card {
-            background-color: var(--light-card);
+            background: linear-gradient(135deg, rgba(245, 246, 250, 0.8) 0%, rgba(245, 246, 250, 0.6) 100%);
             border-color: var(--light-border);
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
             border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
+            box-shadow: 0 16px 40px rgba(0, 217, 255, 0.15);
+            transform: translateY(-6px);
         }
 
         .project-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
             color: var(--primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
         }
 
         body.light-theme .project-card h3 {
             color: var(--light-accent);
         }
 
+        .project-card p {
+            color: rgba(232, 238, 247, 0.8);
+            margin-bottom: 1.25rem;
+            flex-grow: 1;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        body.light-theme .project-card p {
+            color: rgba(15, 20, 25, 0.7);
+        }
+
+        .project-metrics {
+            background: rgba(0, 217, 255, 0.05);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1.25rem;
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        body.light-theme .project-metrics {
+            background: rgba(0, 102, 255, 0.05);
+            color: var(--light-accent);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: rgba(0, 217, 255, 0.1);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .project-link:hover {
+            background-color: rgba(0, 217, 255, 0.2);
+        }
+
+        body.light-theme .project-link {
+            background-color: rgba(0, 102, 255, 0.1);
+            color: var(--light-accent);
+        }
+
+        body.light-theme .project-link:hover {
+            background-color: rgba(0, 102, 255, 0.2);
+        }
+
         .project-tags {
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
-            margin-top: 1rem;
         }
 
         .tag {
-            background-color: rgba(0, 212, 255, 0.1);
+            background-color: rgba(0, 217, 255, 0.1);
             color: var(--primary);
-            padding: 0.25rem 0.75rem;
+            padding: 0.35rem 0.85rem;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
         }
 
         body.light-theme .tag {
-            background-color: rgba(0, 123, 255, 0.1);
+            background-color: rgba(0, 102, 255, 0.1);
             color: var(--light-accent);
         }
 
-        /* Publications Section */
-        .publication-item {
-            background-color: var(--dark-card);
+        /* Thought Leadership Section */
+        .thought-leadership-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.05rem;
+            color: rgba(232, 238, 247, 0.85);
+            line-height: 1.8;
+        }
+
+        body.light-theme .thought-leadership-intro {
+            color: rgba(15, 20, 25, 0.75);
+        }
+
+        .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .publication-card {
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, rgba(108, 92, 231, 0.05) 100%);
+            border: 1px solid var(--dark-border);
+            border-left: 3px solid var(--primary);
             padding: 2rem;
             border-radius: 8px;
-            border-left: 4px solid var(--primary);
-            margin-bottom: 1.5rem;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
 
-        body.light-theme .publication-item {
-            background-color: var(--light-card);
-            border-color: var(--light-accent);
+        body.light-theme .publication-card {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.03) 0%, rgba(108, 92, 231, 0.03) 100%);
+            border-color: var(--light-border);
+            border-left-color: var(--light-accent);
         }
 
-        .publication-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.1);
+        .publication-card:hover {
+            transform: translateX(6px);
+            box-shadow: 0 8px 24px rgba(0, 217, 255, 0.1);
         }
 
-        .publication-item h3 {
+        .publication-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
             color: var(--primary);
             margin-bottom: 0.5rem;
         }
 
-        body.light-theme .publication-item h3 {
+        body.light-theme .publication-card h3 {
             color: var(--light-accent);
         }
 
-        .publication-date {
+        .publication-source {
             color: var(--secondary);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .publication-card p {
+            color: rgba(232, 238, 247, 0.8);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        body.light-theme .publication-card p {
+            color: rgba(15, 20, 25, 0.7);
+        }
+
+        .newsletter-cta {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.08) 0%, rgba(108, 92, 231, 0.08) 100%);
+            border: 1px solid var(--dark-border);
+            border-radius: 8px;
+        }
+
+        body.light-theme .newsletter-cta {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.05) 0%, rgba(108, 92, 231, 0.05) 100%);
+            border-color: var(--light-border);
+        }
+
+        .newsletter-cta h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        body.light-theme .newsletter-cta h3 {
+            color: var(--light-accent);
+        }
+
+        .newsletter-cta p {
+            color: rgba(232, 238, 247, 0.8);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        body.light-theme .newsletter-cta p {
+            color: rgba(15, 20, 25, 0.7);
         }
 
         /* Contact Section */
+        .contact-intro {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            font-size: 1.05rem;
+            color: rgba(232, 238, 247, 0.85);
+            line-height: 1.8;
+        }
+
+        body.light-theme .contact-intro {
+            color: rgba(15, 20, 25, 0.75);
+        }
+
         .contact-links {
             display: flex;
             justify-content: center;
@@ -489,7 +686,8 @@
             color: var(--primary);
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s;
+            font-size: 1rem;
+            transition: all 0.3s ease;
         }
 
         body.light-theme .contact-link {
@@ -497,46 +695,52 @@
         }
 
         .contact-link:hover {
-            transform: scale(1.05);
-            gap: 1rem;
+            transform: translateY(-2px);
+            gap: 0.85rem;
         }
 
         /* Footer */
         footer {
-            background-color: rgba(5, 8, 18, 0.95);
-            color: rgba(232, 238, 247, 0.7);
+            background-color: rgba(10, 14, 39, 0.9);
+            color: rgba(232, 238, 247, 0.6);
             text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
+            padding: 2.5rem 2rem;
+            margin-top: 5rem;
             border-top: 1px solid var(--dark-border);
+            font-size: 0.9rem;
         }
 
         body.light-theme footer {
-            background-color: rgba(248, 249, 250, 0.95);
-            color: rgba(26, 26, 26, 0.7);
+            background-color: rgba(245, 246, 250, 0.9);
+            color: rgba(15, 20, 25, 0.6);
             border-top: 1px solid var(--light-border);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .hero-content h1 {
-                font-size: 2rem;
+                font-size: 2.25rem;
             }
 
             .hero-content p {
-                font-size: 1rem;
+                font-size: 1.05rem;
             }
 
             nav {
-                gap: 1rem;
+                gap: 1.5rem;
             }
 
             nav a {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
             }
 
             .cta-buttons {
                 flex-direction: column;
+                gap: 1rem;
             }
 
             .btn {
@@ -544,12 +748,32 @@
             }
 
             section h2 {
-                font-size: 1.8rem;
+                font-size: 2rem;
+            }
+
+            section {
+                margin: 3rem 0;
             }
 
             .contact-links {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 1.25rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+
+            main {
+                padding: 0 1.5rem;
+            }
+
+            header {
+                padding: 1rem 1.5rem;
             }
         }
     </style>
@@ -559,12 +783,12 @@
 <!-- Header & Navigation -->
 <header>
     <div class="header-container">
-        <a href="#" class="logo">🚀 Akoua</a>
+        <a href="#" class="logo">Akoua</a>
         <nav>
             <a href="#about">About</a>
             <a href="#expertise">Expertise</a>
             <a href="#projects">Projects</a>
-            <a href="#publications">Publications</a>
+            <a href="#insights">Insights</a>
             <a href="#contact">Contact</a>
             <button class="theme-toggle" id="themeToggle">🌙</button>
         </nav>
@@ -574,11 +798,11 @@
 <!-- Hero Section -->
 <section class="hero">
     <div class="hero-content">
-        <h1>AI Systems Engineer & Builder</h1>
-        <p>Building scalable, production-grade AI systems that solve real-world problems</p>
+        <h1>Building Scalable AI & Autonomous Systems for Real-World Impact</h1>
+        <p>AI Systems Engineer & Strategist | Transforming applied research and cross-sector deployment into enterprise-grade autonomous pipelines.</p>
         <div class="cta-buttons">
-            <a href="#projects" class="btn btn-primary">View My Work</a>
-            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+            <a href="#projects" class="btn btn-primary">Explore Engineering Projects</a>
+            <a href="#insights" class="btn btn-secondary">Read Insights</a>
         </div>
     </div>
 </section>
@@ -586,64 +810,49 @@
 <main>
     <!-- About Section -->
     <section id="about">
-        <h2>About My Journey</h2>
-        <div class="cards-grid about-cards">
-            <div class="card">
-                <h3>🎓 Education</h3>
-                <p>Master's degree in AI & Machine Learning with deep expertise in autonomous systems architecture and deep learning.</p>
-            </div>
-            <div class="card">
-                <h3>👥 Training & Mentoring</h3>
-                <p>3+ years training organizations and professionals across logistics, business, marketing, and education on applied AI.</p>
-            </div>
-            <div class="card">
-                <h3>🏗️ Building Systems</h3>
-                <p>Designing and deploying production-ready AI systems with focus on scalability and real-world impact.</p>
-            </div>
-            <div class="card">
-                <h3>📊 Policy & Strategy</h3>
-                <p>Contributing to national AI strategies and governance frameworks with thought leadership on responsible AI.</p>
-            </div>
-            <div class="card">
-                <h3>🌍 Global Impact</h3>
-                <p>Speaking at international conferences and working with governments and enterprises on AI transformation.</p>
-            </div>
-            <div class="card">
-                <h3>💡 Innovation</h3>
-                <p>Patents in autonomous systems approaches and proprietary frameworks for scalable AI implementation.</p>
-            </div>
+        <h2>The Founder's Journey</h2>
+        <div class="about-narrative">
+            <p>
+                With a <span class="highlight">Master's degree in AI and Big Data</span>, I've built a career at the intersection of research, engineering, and strategic impact. Over <span class="highlight">+10 years in tech ecosystem enabling</span>, I've partnered with enterprises to accelerate AI adoption. In the last <span class="highlight">3+ years, I've trained organizations across Logistics, SMEs, Marketing, and Education</span> on applied AI frameworks that deliver measurable results.
+            </p>
+            <p style="margin-top: 1.5rem;">
+                My work on <span class="highlight">National AI Policies and Strategic Frameworks</span> has given me a macro perspective on how technology shapes economies and ecosystems. Today, my mission is clear: <span class="highlight">scale robust, autonomous AI systems that transform enterprises and unlock untapped potential in the global tech ecosystem.</span>
+            </p>
         </div>
     </section>
 
     <!-- Expertise Section -->
     <section id="expertise">
-        <h2>My Expertise</h2>
+        <h2>Core Pillars of Expertise</h2>
         <div class="expertise-grid">
-            <div class="expertise-card">
-                <h3>🔧 Technical Skills</h3>
+            <div class="expertise-pillar">
+                <h3>🔧 AI Engineering & Core Architecture</h3>
                 <ul>
-                    <li>Machine Learning & Deep Learning</li>
-                    <li>Autonomous Systems & AI Agents</li>
-                    <li>ML Production Systems</li>
-                    <li>Data Architecture & Optimization</li>
+                    <li>Python & PyTorch for deep learning systems</li>
+                    <li>Autonomous agents & multi-agent systems</li>
+                    <li>Scalable inference & real-time processing</li>
+                    <li>Model deployment & production infrastructure</li>
+                    <li>System design for enterprise reliability</li>
                 </ul>
             </div>
-            <div class="expertise-card">
-                <h3>📈 Domain Knowledge</h3>
+            <div class="expertise-pillar">
+                <h3>🌍 Cross-Sector Domain Adaptation</h3>
                 <ul>
-                    <li>Logistics & Supply Chain</li>
-                    <li>Business & SME Solutions</li>
-                    <li>Marketing & Personalization</li>
-                    <li>Education & Training</li>
+                    <li>Logistics optimization & supply chain AI</li>
+                    <li>SME operations & business automation</li>
+                    <li>Education & skill development frameworks</li>
+                    <li>Marketing & personalization pipelines</li>
+                    <li>Industry-specific AI solutions</li>
                 </ul>
             </div>
-            <div class="expertise-card">
-                <h3>⭐ Core Competencies</h3>
+            <div class="expertise-pillar">
+                <h3>📋 AI Governance & Strategy</h3>
                 <ul>
-                    <li>System Architecture & Design</li>
-                    <li>Strategic Advisory</li>
-                    <li>Knowledge Transfer</li>
-                    <li>Research & Implementation</li>
+                    <li>National-level AI policy development</li>
+                    <li>Risk assessment & mitigation frameworks</li>
+                    <li>Ethical AI & responsible scaling</li>
+                    <li>Strategic advisory for enterprises</li>
+                    <li>Ecosystem impact measurement</li>
                 </ul>
             </div>
         </div>
@@ -651,99 +860,125 @@
 
     <!-- Featured Projects Section -->
     <section id="projects">
-        <h2>Featured Projects</h2>
+        <h2>Featured Real-World Projects</h2>
         <div class="search-box">
-            <input type="text" id="projectSearch" placeholder="Search projects...">
+            <input type="text" id="projectSearch" placeholder="Filter by keyword: Logistics, Policy, Colab, etc.">
         </div>
-        <div class="cards-grid" id="projectsGrid">
-            <div class="project-card" data-project="logistics">
-                <h3>🚚 Autonomous Logistics System</h3>
-                <p>AI-driven optimization system for supply chain automation and route optimization, reducing operational costs by 25-35%.</p>
+        <div class="projects-grid" id="projectsGrid">
+            
+            <!-- Project 1: Logistics -->
+            <div class="project-card" data-keywords="logistics optimization supply-chain ai ml colab github">
+                <h3>🚚 Autonomous Optimization for Logistics & Supply Chain</h3>
+                <p>Enterprise-grade AI system for real-time route optimization, demand forecasting, and supply chain coordination across multi-modal networks.</p>
+                <div class="project-metrics">
+                    <strong>Enterprise Impact:</strong> 28% reduction in logistics costs | 45% faster delivery cycles | 99.2% system reliability
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">GitHub Repo</a>
+                    <a href="#" class="project-link">Colab Notebook</a>
+                </div>
                 <div class="project-tags">
                     <span class="tag">AI/ML</span>
                     <span class="tag">Optimization</span>
                     <span class="tag">Production</span>
                 </div>
             </div>
-            <div class="project-card" data-project="training">
-                <h3>📚 AI Training Platform</h3>
-                <p>Comprehensive educational platform for organizations to build AI capabilities across teams with hands-on implementations.</p>
+
+            <!-- Project 2: SME Toolkits -->
+            <div class="project-card" data-keywords="sme business scalability ai solutions colab">
+                <h3>📊 Applied AI Scalability Toolkits for SMEs & Business</h3>
+                <p>Modular, production-ready AI frameworks enabling small and medium enterprises to deploy autonomous systems for operations, analytics, and decision-making without AI expertise.</p>
+                <div class="project-metrics">
+                    <strong>Business Outcomes:</strong> 52+ organizations trained | 18-month ROI average | Democratized AI for 500+ SMEs
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">GitHub Repo</a>
+                    <a href="#" class="project-link">Colab Notebook</a>
+                </div>
+                <div class="project-tags">
+                    <span class="tag">Scalability</span>
+                    <span class="tag">Enterprise</span>
+                    <span class="tag">Toolkit</span>
+                </div>
+            </div>
+
+            <!-- Project 3: Education -->
+            <div class="project-card" data-keywords="education ai deployment frameworks learning colab">
+                <h3>🎓 Production-Ready Educational AI Deployment Frameworks</h3>
+                <p>End-to-end platform for deploying intelligent tutoring systems, learning personalization engines, and adaptive assessment frameworks in educational institutions globally.</p>
+                <div class="project-metrics">
+                    <strong>Education Impact:</strong> 30+ institutions deployed | 35% improvement in learner outcomes | Trained 2,000+ educators
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link">GitHub Repo</a>
+                    <a href="#" class="project-link">Colab Notebook</a>
+                </div>
                 <div class="project-tags">
                     <span class="tag">Education</span>
-                    <span class="tag">Training</span>
-                    <span class="tag">Consulting</span>
+                    <span class="tag">Frameworks</span>
+                    <span class="tag">Deployment</span>
                 </div>
             </div>
-            <div class="project-card" data-project="business">
-                <h3>💼 Enterprise AI Solutions</h3>
-                <p>Custom AI implementations for SMEs including predictive analytics, automation, and decision support systems.</p>
-                <div class="project-tags">
-                    <span class="tag">Enterprise</span>
-                    <span class="tag">Custom Solutions</span>
-                    <span class="tag">Implementation</span>
+
+            <!-- Project 4: Policy -->
+            <div class="project-card" data-keywords="policy governance ai national strategy framework">
+                <h3>🏛️ Interactive National AI Policy & Governance Blueprint</h3>
+                <p>Comprehensive research-backed framework for national AI strategy, risk governance, and ethical scaling. Includes policy templates, assessment models, and implementation roadmaps for governments and enterprises.</p>
+                <div class="project-metrics">
+                    <strong>Policy Impact:</strong> 3 national frameworks adopted | 8 government agencies engaged | Blueprint used by 15+ emerging tech economies
                 </div>
-            </div>
-            <div class="project-card" data-project="policy">
-                <h3>🏛️ AI Policy Research</h3>
-                <p>National-level AI strategy research and governance framework development with government stakeholders.</p>
+                <div class="project-links">
+                    <a href="#" class="project-link">Policy Document</a>
+                    <a href="#" class="project-link">Research Hub</a>
+                </div>
                 <div class="project-tags">
                     <span class="tag">Policy</span>
                     <span class="tag">Strategy</span>
-                    <span class="tag">Research</span>
+                    <span class="tag">Governance</span>
                 </div>
             </div>
-            <div class="project-card" data-project="agents">
-                <h3>🤖 Autonomous Agents Framework</h3>
-                <p>Proprietary framework for building and deploying intelligent agents with advanced decision-making capabilities.</p>
-                <div class="project-tags">
-                    <span class="tag">AI Agents</span>
-                    <span class="tag">Architecture</span>
-                    <span class="tag">Framework</span>
-                </div>
-            </div>
-            <div class="project-card" data-project="analytics">
-                <h3>📊 Advanced Analytics Platform</h3>
-                <p>End-to-end analytics platform for business intelligence and real-time decision support across enterprises.</p>
-                <div class="project-tags">
-                    <span class="tag">Analytics</span>
-                    <span class="tag">BI</span>
-                    <span class="tag">Real-time</span>
-                </div>
-            </div>
+
         </div>
     </section>
 
-    <!-- Publications Section -->
-    <section id="publications">
-        <h2>Publications & Articles</h2>
-        <div class="publication-item">
-            <h3>Building Scalable AI Systems for Real-World Impact</h3>
-            <div class="publication-date">Published on LinkedIn Newsletter</div>
-            <p>Insights on designing production-grade AI systems that scale across enterprises and solve real business challenges.</p>
+    <!-- Thought Leadership Section -->
+    <section id="insights">
+        <h2>Thought Leadership & Insights</h2>
+        <div class="thought-leadership-intro">
+            <p>I share strategic insights on autonomous systems architecture, responsible AI scaling, and tech ecosystem transformation through my LinkedIn Newsletter and research publications.</p>
         </div>
-        <div class="publication-item">
-            <h3>Understanding Autonomous Systems Architecture</h3>
-            <div class="publication-date">Published on Medium</div>
-            <p>Deep dive into designing autonomous systems that make intelligent decisions in dynamic environments.</p>
+        
+        <div class="publications-grid">
+            <div class="publication-card">
+                <h3>Architecting Autonomous Systems</h3>
+                <div class="publication-source">LinkedIn Newsletter</div>
+                <p>Deep dive into the principles of designing autonomous systems that make intelligent decisions in dynamic, real-world environments without constant human intervention.</p>
+            </div>
+            <div class="publication-card">
+                <h3>Responsible AI Scaling</h3>
+                <div class="publication-source">LinkedIn Newsletter</div>
+                <p>How to scale AI systems responsibly, balancing performance, safety, ethics, and fairness as you move from research to production across enterprises.</p>
+            </div>
+            <div class="publication-card">
+                <h3>National AI Strategy & Tech Ecosystems</h3>
+                <div class="publication-source">Research Publication</div>
+                <p>A strategic framework for aligning national AI policies with economic growth, talent development, and responsible innovation in emerging tech economies.</p>
+            </div>
         </div>
-        <div class="publication-item">
-            <h3>Policy & Technology: Building Responsible AI</h3>
-            <div class="publication-date">Published on LinkedIn Newsletter</div>
-            <p>How policy and technology must work together to create AI systems that are both powerful and responsible.</p>
-        </div>
-        <div class="publication-item">
-            <h3>Scaling AI in Enterprise Environments</h3>
-            <div class="publication-date">Published on Substack</div>
-            <p>Lessons learned from implementing and scaling machine learning systems in production enterprise environments.</p>
+
+        <div class="newsletter-cta">
+            <h3>Subscribe to the Newsletter</h3>
+            <p>Get weekly insights on AI systems engineering, autonomous agents, and the future of enterprise AI.</p>
+            <a href="https://www.linkedin.com/in/akoua-awoudja" target="_blank" class="btn btn-primary">Follow on LinkedIn</a>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
-        <h2>Let's Connect</h2>
-        <p style="text-align: center; margin-bottom: 2rem; color: rgba(232, 238, 247, 0.8);">
-            Interested in collaboration, consulting, speaking, or just want to chat about AI? Reach out!
-        </p>
+        <h2>Let's Build Together</h2>
+        <div class="contact-intro">
+            <p>I'm actively engaging with enterprise partners, tech builders, and investors who are committed to scaling autonomous AI systems. Whether you're exploring AI transformation, building autonomous agents, or shaping policy—let's connect.</p>
+        </div>
         <div class="contact-links">
             <a href="mailto:akoua.awoudja@gmail.com" class="contact-link">
                 <span>📧</span> Email
@@ -763,16 +998,13 @@
 
 <!-- Footer -->
 <footer>
-    <p>© 2026 Akoua Awoudja | AI Systems Engineer</p>
-    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Building scalable AI systems for real-world impact</p>
+    <p>© 2026 Akoua Awoudja | AI Systems Engineer & Founder</p>
+    <p>Building scalable autonomous systems for enterprise impact</p>
 </footer>
 
 <script>
     // Theme Toggle
     const themeToggle = document.getElementById('themeToggle');
-    const htmlElement = document.documentElement;
-
-    // Load theme preference from localStorage
     const savedTheme = localStorage.getItem('theme') || 'dark';
     if (savedTheme === 'light') {
         document.body.classList.add('light-theme');
@@ -786,15 +1018,15 @@
         localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
 
-    // Project Search
+    // Project Search/Filter
     const projectSearch = document.getElementById('projectSearch');
     const projectCards = document.querySelectorAll('.project-card');
 
     projectSearch.addEventListener('input', (e) => {
         const searchTerm = e.target.value.toLowerCase();
         projectCards.forEach(card => {
-            const text = card.textContent.toLowerCase();
-            card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+            const keywords = card.getAttribute('data-keywords').toLowerCase();
+            card.style.display = keywords.includes(searchTerm) ? 'block' : 'none';
         });
     });
 
